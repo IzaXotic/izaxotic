@@ -20,7 +20,7 @@ const team = [
 
 export default function AboutSection() {
   return (
-    <section id="about" className="section-padding relative overflow-hidden scanlines">
+    <section id="about" aria-label="About IzaXotic studio" className="section-padding relative overflow-hidden scanlines">
       {/* 3D backgrounds */}
       <ParticleField count={300} color="#7c3aed" speed={0.08} className="opacity-25 pointer-events-none" />
       <div className="absolute right-0 top-0 w-80 h-80 pointer-events-none opacity-60">

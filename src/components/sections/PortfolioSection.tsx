@@ -134,7 +134,7 @@ export default function PortfolioSection() {
   const rest = filtered.filter((p) => p.id !== featured?.id);
 
   return (
-    <section id="portfolio" className="section-padding relative scanlines">
+    <section id="portfolio" aria-label="Portfolio and case studies" className="section-padding relative scanlines">
       {/* 3D grid background */}
       <FloatingGrid className="opacity-25" />
       <div className="absolute inset-0 noise-grain pointer-events-none" />
