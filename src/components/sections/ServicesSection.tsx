@@ -1,7 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Code2, Palette, Globe, Layers, Zap, Smartphone, Monitor, ArrowRight, Terminal,
 } from "lucide-react";
@@ -158,21 +158,9 @@ function ServiceCard({ service, isActive, onActivate, index }: {
 
 export default function ServicesSection() {
   const [activeId, setActiveId] = useState<string | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  // Track scroll progress through the section (0 at top → 1 at bottom)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-
-  // Cards: scroll upward faster + fade out as user scrolls
-  const cardsY = useTransform(scrollYProgress, [0, 0.6, 1], [0, -80, -200]);
-  const cardsOpacity = useTransform(scrollYProgress, [0, 0.4, 0.75], [1, 1, 0]);
-  const cardsScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.98, 0.92]);
 
   return (
-    <section ref={sectionRef} id="services" aria-label="Web development and design services" className="relative scanlines" style={{ minHeight: "150vh" }}>
+    <section id="services" aria-label="Web development and design services" className="section-padding relative scanlines">
       {/* 3D particle background */}
       <ParticleField count={500} color="#7c3aed" speed={0.12} className="opacity-35" />
 
@@ -183,54 +171,48 @@ export default function ServicesSection() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-purple-500/30 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-purple-500/50" style={{ boxShadow: "0 0 10px rgba(124,58,237,0.3)" }} />
 
-      {/* Sticky container — header pins here */}
-      <div className="sticky top-0 overflow-hidden" style={{ minHeight: "100vh", paddingTop: "6rem", paddingBottom: "4rem", paddingLeft: "1.5rem", paddingRight: "1.5rem" }}>
-        <div className="max-w-6xl mx-auto relative z-10">
-          {/* HUD header — stays pinned */}
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-[10px] uppercase tracking-[0.3em] font-mono mb-4"
-              style={{ background: "rgba(124,58,237,0.06)", border: "1px solid rgba(124,58,237,0.12)" }}>
-              <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
-              SYS://SERVICES — ONLINE
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Two Disciplines, <span className="gradient-text glitch-text" data-text="One Studio">One Studio</span>
-            </h2>
-            <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-              Custom web development and UI/UX design — two powerful disciplines that together create complete, extraordinary digital products.
-            </p>
-          </motion.div>
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* HUD header */}
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-16">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-[10px] uppercase tracking-[0.3em] font-mono mb-4"
+            style={{ background: "rgba(124,58,237,0.06)", border: "1px solid rgba(124,58,237,0.12)" }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
+            SYS://SERVICES — ONLINE
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Two Disciplines, <span className="gradient-text glitch-text" data-text="One Studio">One Studio</span>
+          </h2>
+          <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
+            Custom web development and UI/UX design — two powerful disciplines that together create complete, extraordinary digital products.
+          </p>
+        </motion.div>
 
-          {/* Cards + Stats — these scroll up and fade */}
-          <motion.div style={{ y: cardsY, opacity: cardsOpacity, scale: cardsScale }}>
-            {/* Cards */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {services.map((service, i) => (
-                <motion.div key={service.id} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: i * 0.15 }} viewport={{ once: true }}>
-                  <ServiceCard service={service} isActive={activeId === service.id} onActivate={() => setActiveId(activeId === service.id ? null : service.id)} index={i} />
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Stats — HUD data readout */}
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} viewport={{ once: true }}
-              className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { value: "50+", label: "Builds Shipped", code: "0x032" },
-                { value: "0", label: "Templates Used", code: "0x000" },
-                { value: "100%", label: "Custom Code", code: "0xFFF" },
-                { value: "<24h", label: "Response Time", code: "0x018" },
-              ].map((s) => (
-                <div key={s.label} className="rounded-xl px-5 py-4 text-center hud-corners relative overflow-hidden"
-                  style={{ background: "rgba(5,5,7,0.7)", border: "1px solid rgba(124,58,237,0.06)" }}>
-                  <span className="absolute top-1.5 right-2 text-[8px] font-mono text-purple-700/40">{s.code}</span>
-                  <p className="text-2xl font-bold gradient-text font-mono">{s.value}</p>
-                  <p className="text-[10px] text-gray-600 mt-1 uppercase tracking-wider font-mono">{s.label}</p>
-                </div>
-              ))}
+        {/* Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {services.map((service, i) => (
+            <motion.div key={service.id} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: i * 0.15 }} viewport={{ once: true }}>
+              <ServiceCard service={service} isActive={activeId === service.id} onActivate={() => setActiveId(activeId === service.id ? null : service.id)} index={i} />
             </motion.div>
-          </motion.div>
+          ))}
         </div>
+
+        {/* Stats — HUD data readout */}
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} viewport={{ once: true }}
+          className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[
+            { value: "50+", label: "Builds Shipped", code: "0x032" },
+            { value: "0", label: "Templates Used", code: "0x000" },
+            { value: "100%", label: "Custom Code", code: "0xFFF" },
+            { value: "<24h", label: "Response Time", code: "0x018" },
+          ].map((s) => (
+            <div key={s.label} className="rounded-xl px-5 py-4 text-center hud-corners relative overflow-hidden"
+              style={{ background: "rgba(5,5,7,0.7)", border: "1px solid rgba(124,58,237,0.06)" }}>
+              <span className="absolute top-1.5 right-2 text-[8px] font-mono text-purple-700/40">{s.code}</span>
+              <p className="text-2xl font-bold gradient-text font-mono">{s.value}</p>
+              <p className="text-[10px] text-gray-600 mt-1 uppercase tracking-wider font-mono">{s.label}</p>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

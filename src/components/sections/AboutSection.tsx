@@ -27,7 +27,7 @@ export default function AboutSection() {
         <GlowOrb size={1.2} color="#A78BFA" pulseSpeed={0.8} />
       </div>
 
-      {/* Noise grain */}
+      {/* Grid bg */}
       <div className="absolute inset-0 noise-grain pointer-events-none" />
 
       {/* Circuit connector */}

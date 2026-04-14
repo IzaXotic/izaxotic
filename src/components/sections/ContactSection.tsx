@@ -241,14 +241,14 @@ export default function ContactSection() {
                     <div>
                       <label htmlFor="subject" className="block text-xs text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Subject</label>
                       <input id="subject" {...register("subject")} placeholder="Web Application Development"
-                        className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 min-h-[48px] text-white text-base font-mono placeholder-gray-600 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all" />
+                        className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 min-h-[48px] text-white text-base font-mono placeholder-gray-700 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all" />
                       {errors.subject && <p className="mt-1 text-xs text-red-400 font-mono">{errors.subject.message}</p>}
                     </div>
 
                     <div>
                       <label htmlFor="message" className="block text-xs text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Message</label>
                       <textarea id="message" {...register("message")} rows={5} placeholder="Tell us about your project, timeline, and goals..."
-                        className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 min-h-[48px] text-white text-base font-mono placeholder-gray-600 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all resize-none" />
+                        className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 min-h-[48px] text-white text-base font-mono placeholder-gray-700 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all resize-none" />
                       {errors.message && <p className="mt-1 text-xs text-red-400 font-mono">{errors.message.message}</p>}
                     </div>
 
