@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, Zap, Star, Crown, ArrowRight } from "lucide-react";
 import IXMark from "@/components/ui/IXMark";
+import { useParallax } from "@/hooks/useParallax";
 
 const WarpTunnel = dynamic(() => import("@/components/three/WarpTunnel"), { ssr: false });
 
@@ -92,22 +93,27 @@ function formatINR(amount: number) {
 
 export default function PricingSection() {
   const [billing, setBilling] = useState<BillingCycle>("oneoff");
+  const { ref, bgY, midY, fgY, bgX, opacity } = useParallax();
 
   const scrollToContact = () => {
     document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="pricing" aria-label="Pricing plans and packages" className="section-padding relative overflow-hidden scanlines">
-      {/* 3D warp tunnel background */}
-      <WarpTunnel color="#7c3aed" speed={0.3} className="opacity-30" />
+    <section ref={ref as React.RefObject<HTMLElement>} id="pricing" aria-label="Pricing plans and packages" className="section-padding relative overflow-hidden scanlines">
+      {/* 3D warp tunnel background — slow parallax */}
+      <motion.div style={{ y: bgY, x: bgX }} className="absolute inset-0 z-0">
+        <WarpTunnel color="#7c3aed" speed={0.3} className="opacity-30" />
+      </motion.div>
       <div className="absolute inset-0 noise-grain pointer-events-none" />
 
-      {/* Circuit connector */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-purple-500/25 to-transparent" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-purple-500/40" style={{ boxShadow: "0 0 8px rgba(124,58,237,0.25)" }} />
+      {/* Circuit connector — mid parallax */}
+      <motion.div style={{ y: midY }} className="absolute top-0 left-1/2 -translate-x-1/2">
+        <div className="w-px h-20 bg-gradient-to-b from-purple-500/25 to-transparent" />
+        <div className="w-2 h-2 rounded-full bg-purple-500/40 -ml-[3px] -mt-px" style={{ boxShadow: "0 0 8px rgba(124,58,237,0.25)" }} />
+      </motion.div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <motion.div className="max-w-7xl mx-auto relative z-10" style={{ y: fgY, opacity }}>
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-12">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-[10px] uppercase tracking-[0.3em] font-mono mb-4"
@@ -289,7 +295,7 @@ export default function PricingSection() {
             Get a Free Quote <ArrowRight size={16} />
           </motion.button>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
