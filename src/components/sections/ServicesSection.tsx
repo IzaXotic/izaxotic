@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Code2, Palette, Globe, Layers, Zap, Smartphone, Monitor, ArrowRight, Terminal,
 } from "lucide-react";
+import { useParallax } from "@/hooks/useParallax";
 
 const ParticleField = dynamic(() => import("@/components/three/ParticleField"), { ssr: false });
 
@@ -158,20 +159,25 @@ function ServiceCard({ service, isActive, onActivate, index }: {
 
 export default function ServicesSection() {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const { ref, bgY, midY, fgY, bgX, opacity } = useParallax();
 
   return (
-    <section id="services" aria-label="Web development and design services" className="section-padding relative scanlines">
-      {/* 3D particle background */}
-      <ParticleField count={500} color="#7c3aed" speed={0.12} className="opacity-35" />
+    <section ref={ref as React.RefObject<HTMLElement>} id="services" aria-label="Web development and design services" className="section-padding relative scanlines">
+      {/* 3D particle background — slow parallax */}
+      <motion.div style={{ y: bgY, x: bgX }} className="absolute inset-0 z-0">
+        <ParticleField count={500} color="#7c3aed" speed={0.12} className="opacity-35" />
+      </motion.div>
 
       {/* Noise grain texture */}
       <div className="absolute inset-0 noise-grain pointer-events-none" />
 
-      {/* Circuit connector from hero */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-purple-500/30 to-transparent" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-purple-500/50" style={{ boxShadow: "0 0 10px rgba(124,58,237,0.3)" }} />
+      {/* Circuit connector from hero — mid parallax */}
+      <motion.div style={{ y: midY }} className="absolute top-0 left-1/2 -translate-x-1/2">
+        <div className="w-px h-24 bg-gradient-to-b from-purple-500/30 to-transparent" />
+        <div className="w-2 h-2 rounded-full bg-purple-500/50 -ml-[3px] -mt-px" style={{ boxShadow: "0 0 10px rgba(124,58,237,0.3)" }} />
+      </motion.div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <motion.div className="max-w-6xl mx-auto relative z-10" style={{ y: fgY, opacity }}>
         {/* HUD header */}
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-16">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-[10px] uppercase tracking-[0.3em] font-mono mb-4"
@@ -213,7 +219,7 @@ export default function ServicesSection() {
             </div>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

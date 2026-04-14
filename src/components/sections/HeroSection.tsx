@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ChevronDown, ArrowRight } from "lucide-react";
 import { Suspense } from "react";
 import IXMark from "@/components/ui/IXMark";
+import { useParallax } from "@/hooks/useParallax";
 
 const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
   ssr: false,
@@ -28,6 +29,8 @@ const itemVariants = {
 };
 
 export default function HeroSection() {
+  const { ref, bgY, midY, fgY, bgX } = useParallax({ bg: 0.2, mid: 0.5, fg: 0.9 });
+
   const scrollToServices = () => {
     document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -42,26 +45,30 @@ export default function HeroSection() {
 
   return (
     <section
+      ref={ref as React.RefObject<HTMLElement>}
       id="home"
       aria-label="IzaXotic hero — custom web development studio"
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ background: "radial-gradient(ellipse at 50% 60%, #1a0a3e 0%, #0B0B0F 60%), radial-gradient(ellipse at 80% 80%, rgba(124,58,237,0.08) 0%, transparent 50%)" }}
     >
-      {/* Three.js canvas */}
-      <div className="absolute inset-0 z-0">
+      {/* Three.js canvas — slow parallax layer */}
+      <motion.div className="absolute inset-0 z-0" style={{ y: bgY }}>
         <Suspense fallback={null}>
           <HeroScene />
         </Suspense>
-      </div>
+      </motion.div>
 
       {/* Overlay gradient */}
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-transparent to-[#0B0B0F] pointer-events-none" />
 
-      {/* Glow blob */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple-700/10 blur-[120px] pointer-events-none z-10" />
+      {/* Glow blob — mid parallax + horizontal drift */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-purple-700/10 blur-[120px] pointer-events-none z-10"
+        style={{ y: midY, x: bgX }}
+      />
 
-      {/* Content */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 pt-28 pb-20 w-full">
+      {/* Content — foreground parallax */}
+      <motion.div className="relative z-20 max-w-7xl mx-auto px-6 pt-28 pb-20 w-full" style={{ y: fgY }}>
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -153,7 +160,7 @@ export default function HeroSection() {
             ))}
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Scroll indicator */}
       <motion.button

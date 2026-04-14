@@ -2,6 +2,7 @@
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import IXMark from "@/components/ui/IXMark";
+import { useParallax } from "@/hooks/useParallax";
 
 const GlowOrb = dynamic(() => import("@/components/three/GlowOrb"), { ssr: false });
 const ParticleField = dynamic(() => import("@/components/three/ParticleField"), { ssr: false });
@@ -19,22 +20,28 @@ const team = [
 ];
 
 export default function AboutSection() {
-  return (
-    <section id="about" aria-label="About IzaXotic studio" className="section-padding relative overflow-hidden scanlines">
-      {/* 3D backgrounds */}
-      <ParticleField count={300} color="#7c3aed" speed={0.08} className="opacity-25 pointer-events-none" />
-      <div className="absolute right-0 top-0 w-80 h-80 pointer-events-none opacity-60">
-        <GlowOrb size={1.2} color="#A78BFA" pulseSpeed={0.8} />
-      </div>
+  const { ref, bgY, midY, fgY, bgX, opacity } = useParallax();
 
-      {/* Grid bg */}
+  return (
+    <section ref={ref as React.RefObject<HTMLElement>} id="about" aria-label="About IzaXotic studio" className="section-padding relative overflow-hidden scanlines">
+      {/* 3D backgrounds — slow parallax */}
+      <motion.div style={{ y: bgY }} className="absolute inset-0 z-0 pointer-events-none">
+        <ParticleField count={300} color="#7c3aed" speed={0.08} className="opacity-25 pointer-events-none" />
+      </motion.div>
+      <motion.div style={{ y: midY, x: bgX }} className="absolute right-0 top-0 w-80 h-80 pointer-events-none opacity-60">
+        <GlowOrb size={1.2} color="#A78BFA" pulseSpeed={0.8} />
+      </motion.div>
+
+      {/* Noise grain */}
       <div className="absolute inset-0 noise-grain pointer-events-none" />
 
-      {/* Circuit connector */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-purple-500/25 to-transparent" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-purple-500/40" style={{ boxShadow: "0 0 8px rgba(124,58,237,0.25)" }} />
+      {/* Circuit connector — mid parallax */}
+      <motion.div style={{ y: midY }} className="absolute top-0 left-1/2 -translate-x-1/2">
+        <div className="w-px h-20 bg-gradient-to-b from-purple-500/25 to-transparent" />
+        <div className="w-2 h-2 rounded-full bg-purple-500/40 -ml-[3px] -mt-px" style={{ boxShadow: "0 0 8px rgba(124,58,237,0.25)" }} />
+      </motion.div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <motion.div className="max-w-7xl mx-auto relative z-10" style={{ y: fgY, opacity }}>
         <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="mb-14">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-[10px] uppercase tracking-[0.3em] font-mono mb-3"
             style={{ background: "rgba(124,58,237,0.06)", border: "1px solid rgba(124,58,237,0.12)" }}>
@@ -132,7 +139,7 @@ export default function AboutSection() {
             </motion.div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
