@@ -20,10 +20,13 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "hello@izaxotic.com", href: "mailto:hello@izaxotic.com", code: "0xMAIL" },
+  { icon: Mail, label: "Email", value: "", href: "", code: "0xMAIL", isEmail: true },
   { icon: MapPin, label: "Location", value: "Remote-First, India", href: "", code: "0xGEO" },
   { icon: Clock, label: "Response", value: "< 24 hours", href: "", code: "0xTIME" },
 ];
+
+const emailUser = "hello";
+const emailDomain = "izaxotic.com";
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -97,7 +100,9 @@ export default function ContactSection() {
                   <div className="flex flex-col relative z-10">
                     <span className="text-[8px] text-purple-700/50 font-mono tracking-widest">{info.code}</span>
                     <span className="text-[10px] text-gray-500 uppercase tracking-wider leading-none">{info.label}</span>
-                    {info.href ? (
+                    {"isEmail" in info && info.isEmail ? (
+                      <button onClick={() => window.location.href = `mailto:${emailUser}@${emailDomain}`} className="text-sm text-gray-200 font-medium hover:text-purple-300 transition-colors font-mono text-left">{emailUser}@{emailDomain}</button>
+                    ) : info.href ? (
                       <a href={info.href} className="text-sm text-gray-200 font-medium hover:text-purple-300 transition-colors font-mono">{info.value}</a>
                     ) : (
                       <span className="text-sm text-gray-200 font-medium font-mono">{info.value}</span>
