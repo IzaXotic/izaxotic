@@ -160,7 +160,7 @@ export default function ServicesSection() {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   return (
-    <section id="services" className="section-padding relative scanlines">
+    <section id="services" aria-label="Web development and design services" className="section-padding relative scanlines">
       {/* 3D particle background */}
       <ParticleField count={500} color="#7c3aed" speed={0.12} className="opacity-35" />
 

@@ -43,6 +43,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
+      aria-label="IzaXotic hero — custom web development studio"
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ background: "radial-gradient(ellipse at 50% 60%, #1a0a3e 0%, #0B0B0F 60%), radial-gradient(ellipse at 80% 80%, rgba(124,58,237,0.08) 0%, transparent 50%)" }}
     >
@@ -97,8 +98,9 @@ export default function HeroSection() {
             className="text-lg text-gray-400 mb-10 max-w-xl leading-relaxed"
           >
             We don&apos;t use Wix, Webflow, or WordPress. IzaXotic writes every
-            line of code from scratch — pixel-perfect design, blazing
-            performance, and experiences your users will remember.
+            line of code from scratch — custom web development with pixel-perfect
+            design, blazing performance, SEO optimisation, and digital experiences
+            your users will remember. Based in India, building for the world.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -113,7 +115,8 @@ export default function HeroSection() {
               }}
               whileTap={{ scale: 0.97 }}
               onClick={scrollToContact}
-              className="flex items-center gap-2 px-7 py-3.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white font-semibold text-base transition-all duration-200"
+              aria-label="Launch your custom web project with IzaXotic"
+              className="flex items-center gap-2 px-7 py-3.5 min-h-[48px] rounded-full bg-purple-600 hover:bg-purple-500 text-white font-semibold text-base transition-all duration-200"
               style={{ boxShadow: "0 0 20px rgba(124,58,237,0.4)" }}
             >
               Launch Your Project
@@ -124,7 +127,8 @@ export default function HeroSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
               onClick={scrollToPortfolio}
-              className="flex items-center gap-2 px-7 py-3.5 rounded-full border border-purple-500/40 text-gray-200 hover:border-purple-400 hover:text-white font-semibold text-base transition-all duration-200 glass"
+              aria-label="See IzaXotic portfolio and case studies"
+              className="flex items-center gap-2 px-7 py-3.5 min-h-[48px] rounded-full border border-purple-500/40 text-gray-200 hover:border-purple-400 hover:text-white font-semibold text-base transition-all duration-200 glass"
             >
               See Our Work
             </motion.button>

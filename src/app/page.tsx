@@ -24,6 +24,20 @@ export default function Home() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
+      {/* SEO: crawlable site summary for text-to-code ratio */}
+      <article className="sr-only" aria-label="IzaXotic Studio Overview">
+        <h1>IzaXotic — Custom Web Development &amp; UI/UX Design Studio</h1>
+        <p>
+          IzaXotic is a premium web development and UI/UX design studio that builds
+          high-end, custom-coded websites and web applications from scratch. We do
+          not use templates, page builders, or drag-and-drop tools. Every project is
+          hand-coded with Next.js, React, TypeScript, Three.js, and modern web
+          technologies. Our services include custom web application development,
+          UI/UX design systems, interactive 3D experiences, performance optimisation,
+          SEO audits, CMS dashboards, and ongoing maintenance. Based in India,
+          serving clients worldwide. Contact us to start your project today.
+        </p>
+      </article>
       <HeroSection />
       <ServicesSection />
       <PortfolioSection />

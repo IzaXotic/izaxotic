@@ -23,10 +23,13 @@ body {
   background-color: #050507;
   color: #e5e7eb;
   overflow-x: hidden;
-  cursor: none;
 }
 
-*, *::before, *::after { cursor: none !important; }
+/* Hide default cursor only on devices with fine pointer (desktop) */
+@media (pointer: fine) {
+  body { cursor: none; }
+  *, *::before, *::after { cursor: none !important; }
+}
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #050507; }

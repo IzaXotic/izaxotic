@@ -30,6 +30,7 @@ const navCols: NavCol[] = [
     heading: "Connect",
     code: "NAV://EXT",
     links: [
+      { label: "Facebook", href: "https://www.facebook.com/izaxotic", ext: true },
       { label: "Instagram", href: "https://www.instagram.com/izaxotic", ext: true },
       { label: "LinkedIn", href: "https://www.linkedin.com/company/izaxotic", ext: true },
       { label: "X (Twitter)", href: "https://x.com/izaxotic", ext: true },
@@ -50,7 +51,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative bg-[#050507]">
+    <footer className="relative bg-[#050507]" role="contentinfo" aria-label="Site footer">
       {/* Circuit divider */}
       <div className="relative h-px w-full">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-600/30 to-transparent" />

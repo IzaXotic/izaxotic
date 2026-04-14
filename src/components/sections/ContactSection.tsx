@@ -58,7 +58,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="section-padding relative overflow-hidden scanlines">
+    <section id="contact" aria-label="Contact IzaXotic" className="section-padding relative overflow-hidden scanlines">
       {/* 3D glow orb background */}
       <GlowOrb size={1.5} color="#7C3AED" pulseSpeed={0.6} className="opacity-25" />
       <div className="absolute inset-0 noise-grain pointer-events-none" />
@@ -225,30 +225,30 @@ export default function ContactSection() {
                     className="relative z-10 space-y-5 pt-6">
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-[10px] text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Name</label>
-                        <input {...register("name")} placeholder="John Doe"
-                          className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 text-white text-sm font-mono placeholder-gray-700 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all" />
+                        <label htmlFor="name" className="block text-xs text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Name</label>
+                        <input id="name" {...register("name")} placeholder="John Doe"
+                          className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 min-h-[48px] text-white text-base font-mono placeholder-gray-700 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all" />
                         {errors.name && <p className="mt-1 text-xs text-red-400 font-mono">{errors.name.message}</p>}
                       </div>
                       <div>
-                        <label className="block text-[10px] text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Email</label>
-                        <input {...register("email")} type="email" placeholder="john@company.com"
-                          className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 text-white text-sm font-mono placeholder-gray-700 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all" />
+                        <label htmlFor="email" className="block text-xs text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Email</label>
+                        <input id="email" {...register("email")} type="email" placeholder="john@company.com"
+                          className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 min-h-[48px] text-white text-base font-mono placeholder-gray-700 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all" />
                         {errors.email && <p className="mt-1 text-xs text-red-400 font-mono">{errors.email.message}</p>}
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-[10px] text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Subject</label>
-                      <input {...register("subject")} placeholder="Web Application Development"
-                        className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 text-white text-sm font-mono placeholder-gray-700 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all" />
+                      <label htmlFor="subject" className="block text-xs text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Subject</label>
+                      <input id="subject" {...register("subject")} placeholder="Web Application Development"
+                        className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 min-h-[48px] text-white text-base font-mono placeholder-gray-700 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all" />
                       {errors.subject && <p className="mt-1 text-xs text-red-400 font-mono">{errors.subject.message}</p>}
                     </div>
 
                     <div>
-                      <label className="block text-[10px] text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Message</label>
-                      <textarea {...register("message")} rows={5} placeholder="Tell us about your project, timeline, and goals..."
-                        className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 text-white text-sm font-mono placeholder-gray-700 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all resize-none" />
+                      <label htmlFor="message" className="block text-xs text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Message</label>
+                      <textarea id="message" {...register("message")} rows={5} placeholder="Tell us about your project, timeline, and goals..."
+                        className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 min-h-[48px] text-white text-base font-mono placeholder-gray-700 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all resize-none" />
                       {errors.message && <p className="mt-1 text-xs text-red-400 font-mono">{errors.message.message}</p>}
                     </div>
 

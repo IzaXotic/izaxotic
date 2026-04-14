@@ -98,7 +98,7 @@ export default function PricingSection() {
   };
 
   return (
-    <section id="pricing" className="section-padding relative overflow-hidden scanlines">
+    <section id="pricing" aria-label="Pricing plans and packages" className="section-padding relative overflow-hidden scanlines">
       {/* 3D warp tunnel background */}
       <WarpTunnel color="#7c3aed" speed={0.3} className="opacity-30" />
       <div className="absolute inset-0 noise-grain pointer-events-none" />

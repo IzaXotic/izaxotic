@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/ui/CustomCursor";
@@ -16,9 +16,9 @@ const inter = Inter({
 const siteUrl = "https://izaxotic-prototype.netlify.app";
 
 export const metadata: Metadata = {
-  title: "IzaXotic — Premium Custom Web Development & UI/UX Design Studio",
+  title: "IzaXotic — Custom Web Development & UI/UX Studio",
   description:
-    "IzaXotic crafts high-end, immersive digital experiences that feel alive. 100% custom-coded web development and UI/UX design studio — no templates, no drag-and-drop.",
+    "IzaXotic builds high-end, custom-coded websites & web apps. 100% hand-written code — no templates, no shortcuts.",
   icons: {
     icon: "/favicon.svg",
     apple: "/favicon.svg",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "IzaXotic — Your Vision, Engineered Into Reality",
     description:
-      "Premium custom web development & UI/UX design agency. 100% hand-coded, zero templates.",
+      "Custom web development & UI/UX design agency. Hand-coded, zero templates.",
     type: "website",
     url: siteUrl,
     siteName: "IzaXotic",
@@ -47,11 +47,17 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "IzaXotic — Premium Custom Web Development & UI/UX Design Studio",
+    title: "IzaXotic — Custom Web Development & UI/UX Studio",
     description:
-      "We craft high-end, immersive digital experiences. 100% custom-coded — no templates, no drag-and-drop.",
+      "High-end, custom-coded digital experiences. No templates, no drag-and-drop.",
   },
   robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 /* JSON-LD structured data */
@@ -76,9 +82,11 @@ const organizationSchema = {
     availableLanguage: ["English"],
   },
   sameAs: [
+    "https://www.facebook.com/izaxotic",
     "https://www.instagram.com/izaxotic",
     "https://www.linkedin.com/company/izaxotic",
     "https://x.com/izaxotic",
+    "https://youtube.com/@izaxotic",
   ],
 };
 
