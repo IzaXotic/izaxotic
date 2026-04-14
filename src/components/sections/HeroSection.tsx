@@ -1,8 +1,9 @@
 "use client";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { ChevronDown, Sparkles, ArrowRight } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import { Suspense } from "react";
+import IXMark from "@/components/ui/IXMark";
 
 const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
   ssr: false,
@@ -43,7 +44,7 @@ export default function HeroSection() {
     <section
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: "radial-gradient(ellipse at 50% 60%, #1a0a3e 0%, #0B0B0F 60%), radial-gradient(ellipse at 80% 80%, rgba(34,211,238,0.06) 0%, transparent 50%)" }}
+      style={{ background: "radial-gradient(ellipse at 50% 60%, #1a0a3e 0%, #0B0B0F 60%), radial-gradient(ellipse at 80% 80%, rgba(124,58,237,0.08) 0%, transparent 50%)" }}
     >
       {/* Three.js canvas */}
       <div className="absolute inset-0 z-0">
@@ -69,7 +70,7 @@ export default function HeroSection() {
           {/* Badge */}
           <motion.div variants={itemVariants} className="mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-purple-500/30 text-purple-300 text-sm font-medium">
-              <Sparkles size={14} className="text-purple-400" />
+              <IXMark size={16} />
               100% Hand-Coded · Zero Templates
             </span>
           </motion.div>
@@ -85,8 +86,8 @@ export default function HeroSection() {
             <br />
             Into{" "}
             <span className="relative inline-block">
-              <span className="text-cyan-300">Reality</span>
-              <span className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-cyan-400 to-transparent" />
+              <span className="text-purple-300">Reality</span>
+              <span className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-purple-400 to-transparent" />
             </span>
           </motion.h1>
 

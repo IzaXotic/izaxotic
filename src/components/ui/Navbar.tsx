@@ -1,7 +1,7 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 
 const navLinks = [
@@ -31,113 +31,149 @@ export default function Navbar() {
   };
 
   return (
-    <motion.nav
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "glass border-b border-purple-800/30 py-3"
-          : "bg-transparent py-5"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <motion.a
-          href="#home"
-          onClick={(e) => { e.preventDefault(); scrollTo("#home"); }}
-          whileHover={{ scale: 1.05 }}
-          className="flex items-center gap-2 select-none"
-        >
-          <span
-            className="text-2xl font-bold gradient-text"
-            style={{ fontFamily: "var(--font-display, sans-serif)" }}
+    <>
+      <motion.nav
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled ? "py-2" : "py-4"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6">
+          <div
+            className={`flex items-center justify-between transition-all duration-500 ${
+              scrolled
+                ? "glass rounded-2xl px-6 py-3 border border-purple-500/15 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+                : "px-2 py-2"
+            }`}
           >
-            Iza
-          </span>
-          <span
-            className="text-2xl font-bold text-white"
-            style={{ fontFamily: "var(--font-display, sans-serif)" }}
-          >
-            Xotic
-          </span>
-          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-        </motion.a>
+            {/* Logo */}
+            <motion.a
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#home");
+              }}
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center gap-1.5 select-none group"
+            >
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-600 to-purple-900 flex items-center justify-center border border-purple-500/30 shadow-[0_0_20px_rgba(124,58,237,0.3)] group-hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] transition-shadow duration-300">
+                <span className="text-sm font-black text-white tracking-tight">IX</span>
+              </div>
+              <div className="hidden sm:flex flex-col -space-y-0.5">
+                <span className="text-lg font-bold leading-none">
+                  <span className="gradient-text">Iza</span>
+                  <span className="text-white">Xotic</span>
+                </span>
+              </div>
+            </motion.a>
 
-        {/* Desktop Links */}
-        <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <button
-                onClick={() => scrollTo(link.href)}
-                className={`text-sm font-medium transition-all duration-200 relative group ${
-                  activeSection === link.href.replace("#", "")
-                    ? "text-cyan-400"
-                    : "text-gray-300 hover:text-white"
-                }`}
+            {/* Center nav pill */}
+            <div className="hidden lg:flex items-center">
+              <div className="flex items-center gap-1 rounded-full bg-white/[0.03] border border-purple-500/10 px-1.5 py-1.5">
+                {navLinks.map((link) => {
+                  const isActive = activeSection === link.href.replace("#", "");
+                  return (
+                    <button
+                      key={link.href}
+                      onClick={() => scrollTo(link.href)}
+                      className="relative px-4 py-1.5 text-sm font-medium transition-colors duration-200"
+                      data-cursor-hover
+                    >
+                      {isActive && (
+                        <motion.div
+                          layoutId="nav-active-pill"
+                          className="absolute inset-0 rounded-full bg-purple-600/20 border border-purple-500/30"
+                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        />
+                      )}
+                      <span
+                        className={`relative z-10 ${
+                          isActive ? "text-purple-300" : "text-gray-400 hover:text-white"
+                        }`}
+                      >
+                        {link.label}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right side */}
+            <div className="flex items-center gap-3">
+              <div className="hidden md:flex items-center gap-2 text-xs text-gray-500">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+                </span>
+                Available
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                onClick={() => scrollTo("#contact")}
+                className="hidden md:flex items-center gap-1.5 px-5 py-2 rounded-full bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold transition-all duration-200 shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)]"
               >
-                {link.label}
-                <span
-                  className={`absolute -bottom-1 left-0 h-px bg-gradient-to-r from-purple-500 to-cyan-400 transition-all duration-300 ${
-                    activeSection === link.href.replace("#", "")
-                      ? "w-full"
-                      : "w-0 group-hover:w-full"
-                  }`}
-                />
+                Let&apos;s Build
+                <ArrowUpRight size={14} strokeWidth={2.5} />
+              </motion.button>
+
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden text-white p-2 rounded-xl hover:bg-white/5 transition-colors"
+              >
+                {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
-            </li>
-          ))}
-        </ul>
+            </div>
+          </div>
+        </div>
+      </motion.nav>
 
-        {/* CTA */}
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => scrollTo("#contact")}
-          className="hidden md:flex items-center gap-2 px-5 py-2 rounded-full bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold transition-all duration-200 glow-border"
-        >
-          Let&apos;s Build
-          <span className="w-1.5 h-1.5 rounded-full bg-cyan-300" />
-        </motion.button>
-
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden text-white p-2"
-        >
-          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
+      {/* Full-screen mobile menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass border-t border-purple-800/30 overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 lg:hidden"
+            style={{ background: "rgba(11,11,15,0.97)" }}
           >
-            <div className="px-6 py-4 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <button
+            <div className="flex flex-col items-center justify-center h-full gap-2 px-8">
+              {navLinks.map((link, i) => (
+                <motion.button
                   key={link.href}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ delay: i * 0.06 }}
                   onClick={() => scrollTo(link.href)}
-                  className="text-left text-gray-300 hover:text-purple-400 font-medium transition-colors"
+                  className={`text-3xl font-bold transition-colors py-3 ${
+                    activeSection === link.href.replace("#", "")
+                      ? "gradient-text"
+                      : "text-gray-400 hover:text-white"
+                  }`}
                 >
                   {link.label}
-                </button>
+                </motion.button>
               ))}
-              <button
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
                 onClick={() => scrollTo("#contact")}
-                className="mt-2 w-full py-2.5 rounded-full bg-purple-600 text-white font-semibold"
+                className="mt-6 px-8 py-3.5 rounded-full bg-purple-600 text-white font-bold text-lg shadow-[0_0_30px_rgba(124,58,237,0.4)]"
               >
                 Let&apos;s Build
-              </button>
+              </motion.button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </>
   );
 }

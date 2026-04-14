@@ -8,10 +8,8 @@ import {
   Star,
   Crown,
   ArrowRight,
-  Sparkles,
-  Code2,
-  ShieldCheck,
 } from "lucide-react";
+import IXMark from "@/components/ui/IXMark";
 
 type BillingCycle = "oneoff" | "retainer";
 
@@ -150,7 +148,7 @@ export default function PricingSection() {
           className="text-center mb-12"
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-purple-500/30 text-purple-300 text-xs uppercase tracking-widest font-medium mb-4">
-            <Sparkles size={12} />
+            <IXMark size={14} />
             No Hidden Costs
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">

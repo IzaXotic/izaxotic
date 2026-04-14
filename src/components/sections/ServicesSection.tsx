@@ -1,7 +1,16 @@
 "use client";
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Code2, Palette, ChevronDown, Globe, Layers, Zap, Smartphone, Monitor } from "lucide-react";
+import {
+  Code2,
+  Palette,
+  Globe,
+  Layers,
+  Zap,
+  Smartphone,
+  Monitor,
+  ArrowRight,
+} from "lucide-react";
 
 const services = [
   {
@@ -18,7 +27,14 @@ const services = [
       { icon: Layers, label: "Scalable Architecture" },
       { icon: Smartphone, label: "Mobile-First" },
     ],
-    tech: ["React", "Next.js", "TypeScript", "Node.js", "MongoDB", "PostgreSQL"],
+    tech: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "MongoDB",
+      "PostgreSQL",
+    ],
   },
   {
     id: "ui-ux",
@@ -34,148 +50,192 @@ const services = [
       { icon: Smartphone, label: "Responsive Prototypes" },
       { icon: Zap, label: "Motion & Micro-interactions" },
     ],
-    tech: ["Figma", "Framer", "Three.js", "GSAP", "Tailwind CSS", "Storybook"],
+    tech: [
+      "Figma",
+      "Framer",
+      "Three.js",
+      "GSAP",
+      "Tailwind CSS",
+      "Storybook",
+    ],
   },
 ];
 
-function ServiceCard({ service, isExpanded, onToggle }: {
-  service: typeof services[0];
-  isExpanded: boolean;
-  onToggle: () => void;
+function ServiceCard({
+  service,
+  isActive,
+  onActivate,
+}: {
+  service: (typeof services)[0];
+  isActive: boolean;
+  onActivate: () => void;
 }) {
   const Icon = service.icon;
   const cardRef = useRef<HTMLDivElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const cx = rect.width / 2;
-    const cy = rect.height / 2;
-    const rotateX = ((y - cy) / cy) * -12;
-    const rotateY = ((x - cx) / cx) * 12;
-    cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02,1.02,1.02)`;
-  };
-
-  const handleMouseLeave = () => {
-    if (!cardRef.current) return;
-    cardRef.current.style.transform =
-      "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)";
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
   };
 
   return (
-    <div
+    <motion.div
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ transition: "transform 0.3s ease" }}
+      onClick={onActivate}
+      whileHover={{ y: -4 }}
+      className={`relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-500 ${
+        isActive
+          ? "col-span-1 lg:col-span-2 row-span-2"
+          : "col-span-1 row-span-1"
+      }`}
+      data-cursor-hover
+      style={{
+        background: "rgba(19, 19, 26, 0.6)",
+        backdropFilter: "blur(20px)",
+        border: isActive
+          ? `1px solid ${service.color}50`
+          : "1px solid rgba(124,58,237,0.15)",
+      }}
     >
-      <motion.div
-        layout
-        className="glass rounded-2xl overflow-hidden glow-border cursor-pointer"
-        style={{ borderColor: isExpanded ? `${service.color}60` : "rgba(124,58,237,0.2)" }}
-        onClick={onToggle}
-        data-cursor-hover
-      >
-        {/* Card Header */}
-        <div className="p-8">
-          <div className="flex items-start justify-between mb-6">
-            <div
-              className="w-14 h-14 rounded-xl flex items-center justify-center"
-              style={{ background: `${service.color}20`, border: `1px solid ${service.color}40` }}
-            >
-              <Icon size={26} style={{ color: service.color }} />
-            </div>
-            <motion.div
-              animate={{ rotate: isExpanded ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <ChevronDown size={20} className="text-gray-400" />
-            </motion.div>
-          </div>
+      {/* Spotlight follow effect */}
+      <div
+        className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+        style={{
+          background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, ${service.color}12, transparent 60%)`,
+        }}
+      />
 
-          <p className="text-xs text-purple-400 uppercase tracking-widest mb-2 font-medium">
-            {service.tagline}
-          </p>
-          <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-          <p className="text-gray-400 leading-relaxed text-sm">{service.description}</p>
-
-          {/* Feature Grid */}
-          <div className="grid grid-cols-2 gap-3 mt-6">
-            {service.features.map((f) => {
-              const FIcon = f.icon;
-              return (
-                <div
-                  key={f.label}
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg"
-                  style={{ background: `${service.color}10` }}
-                >
-                  <FIcon size={14} style={{ color: service.color }} />
-                  <span className="text-xs text-gray-300">{f.label}</span>
-                </div>
-              );
-            })}
+      <div className="relative z-10 p-7">
+        {/* Top row */}
+        <div className="flex items-start justify-between mb-5">
+          <div
+            className="w-12 h-12 rounded-2xl flex items-center justify-center"
+            style={{
+              background: `${service.color}15`,
+              border: `1px solid ${service.color}30`,
+            }}
+          >
+            <Icon size={22} style={{ color: service.color }} />
           </div>
+          <motion.div
+            animate={{ rotate: isActive ? 45 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ArrowRight size={18} className="text-gray-500" />
+          </motion.div>
         </div>
 
-        {/* Expandable Panel */}
-        <AnimatePresence initial={false}>
-          {isExpanded && (
+        {/* Title */}
+        <p
+          className="text-[10px] uppercase tracking-[0.2em] mb-2 font-semibold"
+          style={{ color: service.color }}
+        >
+          {service.tagline}
+        </p>
+        <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
+        <p className="text-gray-400 text-sm leading-relaxed">
+          {service.description}
+        </p>
+
+        {/* Features */}
+        <div
+          className={`grid gap-2 mt-5 ${
+            isActive ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-2"
+          }`}
+        >
+          {service.features.map((f) => {
+            const FIcon = f.icon;
+            return (
+              <div
+                key={f.label}
+                className="flex items-center gap-2 px-3 py-2.5 rounded-xl"
+                style={{ background: `${service.color}08` }}
+              >
+                <FIcon size={13} style={{ color: service.color }} />
+                <span className="text-xs text-gray-300 font-medium">
+                  {f.label}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Expanded content */}
+        <AnimatePresence>
+          {isActive && (
             <motion.div
-              key="expanded"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.4 }}
+              className="overflow-hidden"
             >
               <div
-                className="px-8 pb-8 border-t"
-                style={{ borderColor: `${service.color}20` }}
+                className="mt-6 pt-6"
+                style={{ borderTop: `1px solid ${service.color}15` }}
               >
-                <p className="text-xs text-purple-400 uppercase tracking-widest mt-6 mb-3 font-medium">
+                <p
+                  className="text-[10px] uppercase tracking-[0.2em] mb-3 font-semibold"
+                  style={{ color: service.color }}
+                >
                   Tech Stack
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {service.tech.map((t) => (
                     <span
                       key={t}
                       className="px-3 py-1 rounded-full text-xs font-medium text-purple-200"
-                      style={{ background: `${service.color}20`, border: `1px solid ${service.color}30` }}
+                      style={{
+                        background: `${service.color}12`,
+                        border: `1px solid ${service.color}25`,
+                      }}
                     >
                       {t}
                     </span>
                   ))}
                 </div>
                 <motion.button
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.96 }}
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
                   onClick={(e) => {
                     e.stopPropagation();
-                    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+                    document
+                      .querySelector("#contact")
+                      ?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="mt-6 w-full py-3 rounded-xl text-white font-semibold text-sm transition-all"
-                  style={{ background: `linear-gradient(135deg, ${service.color}, #4C1D95)`, boxShadow: `0 0 20px ${service.color}40` }}
+                  className="w-full py-3 rounded-xl text-white font-semibold text-sm flex items-center justify-center gap-2 transition-all"
+                  style={{
+                    background: `linear-gradient(135deg, ${service.color}, #4C1D95)`,
+                    boxShadow: `0 0 25px ${service.color}30`,
+                  }}
                 >
-                  Get a Quote →
+                  Get a Quote
+                  <ArrowRight size={14} />
                 </motion.button>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 }
 
 export default function ServicesSection() {
-  const [expanded, setExpanded] = useState<string | null>(null);
+  const [activeId, setActiveId] = useState<string | null>(null);
 
   return (
     <section id="services" className="section-padding relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-transparent via-purple-500/50 to-transparent" />
+      {/* Connector line */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent via-purple-500/40 to-transparent" />
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -188,7 +248,8 @@ export default function ServicesSection() {
             What We Build
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Two Disciplines, <span className="gradient-text">One Studio</span>
+            Two Disciplines,{" "}
+            <span className="gradient-text">One Studio</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
             We specialise in custom web development and UI/UX design — two
@@ -198,26 +259,50 @@ export default function ServicesSection() {
           </p>
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Bento grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {services.map((service, i) => (
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
+              transition={{ duration: 0.5, delay: i * 0.15 }}
               viewport={{ once: true }}
             >
               <ServiceCard
                 service={service}
-                isExpanded={expanded === service.id}
-                onToggle={() =>
-                  setExpanded(expanded === service.id ? null : service.id)
+                isActive={activeId === service.id}
+                onActivate={() =>
+                  setActiveId(activeId === service.id ? null : service.id)
                 }
               />
             </motion.div>
           ))}
         </div>
+
+        {/* Bottom stat strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4"
+        >
+          {[
+            { value: "50+", label: "Projects Delivered" },
+            { value: "0", label: "Templates Used" },
+            { value: "100%", label: "Custom Code" },
+            { value: "<24h", label: "Response Time" },
+          ].map((s) => (
+            <div
+              key={s.label}
+              className="glass rounded-xl px-5 py-4 text-center border border-purple-500/10"
+            >
+              <p className="text-2xl font-bold gradient-text">{s.value}</p>
+              <p className="text-xs text-gray-500 mt-1">{s.label}</p>
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
