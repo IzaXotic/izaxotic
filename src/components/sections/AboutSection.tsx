@@ -156,13 +156,14 @@ export default function AboutSection() {
                 key={member.name}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8 }}
-                className="glass rounded-2xl p-7 glow-border relative overflow-hidden"
-                style={{
-                  animation: `float ${6 + i * 1.5}s ease-in-out infinite`,
+                animate={{ y: [0, -10, 0] }}
+                transition={{
+                  opacity: { duration: 0.6, delay: i * 0.15 },
+                  y: { duration: 5 + i * 1.5, repeat: Infinity, ease: "easeInOut" },
                 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02, boxShadow: "0 0 40px rgba(124,58,237,0.3)" }}
+                className="glass rounded-2xl p-7 glow-border relative overflow-hidden"
                 data-cursor-hover
               >
                 {/* Glow bg */}
