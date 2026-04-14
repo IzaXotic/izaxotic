@@ -7,7 +7,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Send, CheckCircle, MapPin, Mail, Clock } from "lucide-react";
 import IXMark from "@/components/ui/IXMark";
-import { useParallax } from "@/hooks/useParallax";
 
 const GlowOrb = dynamic(() => import("@/components/three/GlowOrb"), { ssr: false });
 
@@ -34,7 +33,6 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef<HTMLDivElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const { ref, bgY, midY, fgY, bgX, opacity } = useParallax();
 
   const {
     register,
@@ -60,20 +58,16 @@ export default function ContactSection() {
   };
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} id="contact" aria-label="Contact IzaXotic" className="section-padding relative overflow-hidden scanlines">
-      {/* 3D glow orb background — slow parallax */}
-      <motion.div style={{ y: bgY, x: bgX }} className="absolute inset-0 z-0">
-        <GlowOrb size={1.5} color="#7C3AED" pulseSpeed={0.6} className="opacity-25" />
-      </motion.div>
+    <section id="contact" aria-label="Contact IzaXotic" className="section-padding relative overflow-hidden scanlines">
+      {/* 3D glow orb background */}
+      <GlowOrb size={1.5} color="#7C3AED" pulseSpeed={0.6} className="opacity-25" />
       <div className="absolute inset-0 noise-grain pointer-events-none" />
 
-      {/* Circuit connector — mid parallax */}
-      <motion.div style={{ y: midY }} className="absolute top-0 left-1/2 -translate-x-1/2">
-        <div className="w-px h-20 bg-gradient-to-b from-purple-500/25 to-transparent" />
-        <div className="w-2 h-2 rounded-full bg-purple-500/40 -ml-[3px] -mt-px" style={{ boxShadow: "0 0 8px rgba(124,58,237,0.25)" }} />
-      </motion.div>
+      {/* Circuit connector */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-purple-500/25 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-purple-500/40" style={{ boxShadow: "0 0 8px rgba(124,58,237,0.25)" }} />
 
-      <motion.div className="max-w-7xl mx-auto relative z-10" style={{ y: fgY, opacity }}>
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="max-w-xl">
@@ -281,7 +275,7 @@ export default function ContactSection() {
             </div>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
