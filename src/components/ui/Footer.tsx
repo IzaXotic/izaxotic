@@ -41,6 +41,8 @@ const navCols: NavCol[] = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const emailUser = "hello";
+  const emailDomain = "izaxotic.com";
 
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
@@ -132,7 +134,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 text-[11px] text-gray-600 font-mono">
               <span>© {year} IzaXotic</span>
               <span className="hidden sm:inline text-purple-900/30">|</span>
-              <a href="mailto:hello@izaxotic.com" className="hover:text-purple-400 transition-colors">hello@izaxotic.com</a>
+              <button onClick={() => window.location.href = `mailto:${emailUser}@${emailDomain}`} className="hover:text-purple-400 transition-colors">{emailUser}@{emailDomain}</button>
             </div>
             <span className="text-[11px] text-gray-700 font-mono">
               Hand-coded with intent. <span className="hud-blink" />

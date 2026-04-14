@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "custom coded websites",
   ],
   metadataBase: new URL(siteUrl),
-  alternates: { canonical: "/" },
+  alternates: { canonical: siteUrl + "/" },
   openGraph: {
     title: "IzaXotic — Your Vision, Engineered Into Reality",
     description:
