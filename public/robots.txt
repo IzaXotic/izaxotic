@@ -1,0 +1,6 @@
+# IzaXotic - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://izaxotic-prototype.netlify.app/sitemap.xml

@@ -129,7 +129,8 @@ html.lenis { height: auto; }
 #services  { background-color: #0d0d12; }
 #portfolio { background-color: #0b0b0f; }
 #about     { background-color: #0d0d12; }
-#contact   { background-color: #0b0b0f; }
+#pricing   { background-color: #0b0b0f; }
+#contact   { background-color: #0d0d12; }
 
 /* Ensure all text inside sections stays white */
 #services, #portfolio, #about, #contact {

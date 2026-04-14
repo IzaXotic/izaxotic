@@ -111,8 +111,9 @@ export default function PortfolioSection() {
             Featured <span className="gradient-text">Portfolio</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
-            A curated selection of our finest projects — each one a story of
-            craft, collaboration, and impact.
+            A curated selection of our finest web development and design projects
+            — each one a story of craft, collaboration, and measurable impact
+            for our clients.
           </p>
         </motion.div>
 

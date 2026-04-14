@@ -96,8 +96,9 @@ export default function HeroSection() {
             className="text-lg text-gray-400 mb-10 max-w-xl leading-relaxed"
           >
             IzaXotic builds immersive, high-performance digital products that
-            push the boundaries of what's possible — combining cutting-edge
-            technology with stunning design.
+            push the boundaries of what&apos;s possible — combining cutting-edge
+            technology with stunning design. Every line of code is hand-written,
+            every pixel is intentional. No templates, no page-builders, no shortcuts.
           </motion.p>
 
           {/* CTA Buttons */}

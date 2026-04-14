@@ -65,14 +65,15 @@ export default function LoadingScreen() {
           </div>
 
           {/* Brand name */}
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-3xl font-bold text-white mb-2"
+            aria-hidden="true"
           >
             Iza<span className="gradient-text">Xotic</span>
-          </motion.h1>
+          </motion.div>
 
           {/* Status text */}
           <motion.p

@@ -16,9 +16,9 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>;
 
 const contactInfo = [
-  { icon: Mail, label: "Email Us", value: "hello@izaxotic.com" },
-  { icon: MapPin, label: "Location", value: "Global — Remote-First Studio" },
-  { icon: Clock, label: "Response Time", value: "Within 24 hours" },
+  { icon: Mail, label: "Email Us", value: "hello@izaxotic.com", href: "mailto:hello@izaxotic.com" },
+  { icon: MapPin, label: "Location", value: "Remote-First Studio, India", href: "" },
+  { icon: Clock, label: "Response Time", value: "Within 24 hours", href: "" },
 ];
 
 export default function ContactSection() {
@@ -89,7 +89,15 @@ export default function ContactSection() {
                     <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
                       {info.label}
                     </p>
-                    <p className="text-gray-200 font-medium text-sm">{info.value}</p>
+                    <p className="text-gray-200 font-medium text-sm">
+                      {info.href ? (
+                        <a href={info.href} className="hover:text-purple-300 transition-colors">
+                          {info.value}
+                        </a>
+                      ) : (
+                        info.value
+                      )}
+                    </p>
                   </div>
                 </div>
               );

@@ -1,12 +1,18 @@
 "use client";
-import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 
 const links = {
-  Services: ["Web Development", "UI/UX Design", "Consultation"],
-  Company: ["About", "Portfolio", "Contact"],
-  Connect: ["hello@izaxotic.com", "LinkedIn", "Twitter / X"],
+  Services: ["Web Development", "UI/UX Design", "3D & Interactive", "Consultation"],
+  Company: ["About", "Portfolio", "Pricing", "Contact"],
 };
+
+const socials = [
+  { label: "IG", href: "https://www.instagram.com/izaxotic", name: "Instagram" },
+  { label: "Li", href: "https://www.linkedin.com/company/izaxotic", name: "LinkedIn" },
+  { label: "X", href: "https://x.com/izaxotic", name: "X (Twitter)" },
+  { label: "YT", href: "https://youtube.com/@izaxotic", name: "YouTube" },
+  { label: "GH", href: "https://github.com/IzaXotic", name: "GitHub" },
+];
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -22,10 +28,26 @@ export default function Footer() {
               <span className="text-2xl font-bold text-white">Xotic</span>
               <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
             </div>
-            <p className="text-gray-500 text-sm leading-relaxed max-w-xs">
-              We craft digital experiences that feel alive. Premium web
-              development & UI/UX design studio.
+            <p className="text-gray-500 text-sm leading-relaxed max-w-xs mb-4">
+              Premium custom web development &amp; UI/UX design studio. We craft
+              digital experiences that feel alive — 100% hand-coded, zero
+              templates.
             </p>
+            {/* Social icons */}
+            <div className="flex items-center gap-3">
+              {socials.map((s) => (
+                  <a
+                    key={s.name}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.name}
+                    className="w-8 h-8 rounded-lg flex items-center justify-center bg-purple-600/10 border border-purple-500/20 text-gray-500 hover:text-purple-400 hover:border-purple-500/40 transition-all duration-200 text-[10px] font-bold tracking-wide"
+                  >
+                    {s.label}
+                  </a>
+              ))}
+            </div>
           </div>
 
           {/* Links */}
@@ -45,6 +67,25 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+
+          {/* Contact info */}
+          <div>
+            <h4 className="text-xs uppercase tracking-widest text-purple-400 font-semibold mb-4">
+              Contact
+            </h4>
+            <ul className="space-y-2.5 text-sm text-gray-500">
+              <li>
+                <a
+                  href="mailto:hello@izaxotic.com"
+                  className="hover:text-purple-300 transition-colors"
+                >
+                  hello@izaxotic.com
+                </a>
+              </li>
+              <li>Remote-First Studio, India</li>
+              <li>Response within 24 hrs</li>
+            </ul>
+          </div>
         </div>
 
         {/* Bottom bar */}

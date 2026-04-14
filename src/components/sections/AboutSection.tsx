@@ -75,8 +75,10 @@ export default function AboutSection() {
             The <span className="gradient-text">IzaXotic</span> Story
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
-            We are a boutique studio driven by the belief that great design and
-            great engineering are inseparable.
+            We are a boutique web development and UI/UX design studio driven by
+            the belief that great design and great engineering are inseparable.
+            Founded in 2022, we have delivered over 50 custom-coded digital
+            products for clients worldwide.
           </p>
         </motion.div>
 

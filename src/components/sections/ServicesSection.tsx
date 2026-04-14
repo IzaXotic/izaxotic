@@ -191,8 +191,10 @@ export default function ServicesSection() {
             Our <span className="gradient-text">Services</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
-            We specialise in two powerful disciplines that together create
-            complete, extraordinary digital products.
+            We specialise in custom web development and UI/UX design — two
+            powerful disciplines that together create complete, extraordinary
+            digital products. Every project is 100% hand-coded, tailored to your
+            brand, and built for performance.
           </p>
         </motion.div>
 

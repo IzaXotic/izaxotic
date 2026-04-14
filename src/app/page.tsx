@@ -3,24 +3,11 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { motion } from "framer-motion";
 import HeroSection from "@/components/sections/HeroSection";
-
-// Lazy load heavy sections
-const ServicesSection = dynamic(
-  () => import("@/components/sections/ServicesSection"),
-  { ssr: false }
-);
-const PortfolioSection = dynamic(
-  () => import("@/components/sections/PortfolioSection"),
-  { ssr: false }
-);
-const AboutSection = dynamic(
-  () => import("@/components/sections/AboutSection"),
-  { ssr: false }
-);
-const ContactSection = dynamic(
-  () => import("@/components/sections/ContactSection"),
-  { ssr: false }
-);
+import ServicesSection from "@/components/sections/ServicesSection";
+import PortfolioSection from "@/components/sections/PortfolioSection";
+import AboutSection from "@/components/sections/AboutSection";
+import PricingSection from "@/components/sections/PricingSection";
+import ContactSection from "@/components/sections/ContactSection";
 
 function SectionLoader() {
   return (
@@ -38,22 +25,11 @@ export default function Home() {
       transition={{ duration: 0.5 }}
     >
       <HeroSection />
-
-      <Suspense fallback={<SectionLoader />}>
-        <ServicesSection />
-      </Suspense>
-
-      <Suspense fallback={<SectionLoader />}>
-        <PortfolioSection />
-      </Suspense>
-
-      <Suspense fallback={<SectionLoader />}>
-        <AboutSection />
-      </Suspense>
-
-      <Suspense fallback={<SectionLoader />}>
-        <ContactSection />
-      </Suspense>
+      <ServicesSection />
+      <PortfolioSection />
+      <AboutSection />
+      <PricingSection />
+      <ContactSection />
     </motion.div>
   );
 }

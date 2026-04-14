@@ -1,0 +1,31 @@
+# IzaXotic
+
+> Premium custom web development & UI/UX design studio
+
+IzaXotic is a boutique digital agency that builds high-end, immersive web experiences from scratch. Every project is 100% custom-coded — no templates, no drag-and-drop builders, no shortcuts.
+
+## About
+
+Founded in 2022 by Prem IzaX, IzaXotic specialises in premium web development and UI/UX design. The studio delivers pixel-perfect, performance-optimised digital products using cutting-edge technologies including Next.js, React, Three.js, GSAP, and Framer Motion.
+
+## Services
+
+- **Custom Web Development**: Hand-coded websites and web applications built with Next.js, React, and TypeScript. Mobile-first, SEO-optimised, and blazing fast.
+- **UI/UX Design**: Complete design systems crafted in Figma, translated into production-ready code. Research-driven, accessible, and visually stunning.
+- **3D & Interactive Experiences**: Immersive Three.js scenes, advanced animations with GSAP and Framer Motion, and micro-interactions that delight users.
+
+## Pricing
+
+- **Essential** — Starting at ₹15,000 (~$180 USD). Custom-coded website with up to 5 pages, responsive design, contact form, and SEO setup. Delivery: 1-2 weeks.
+- **Professional** — Starting at ₹45,000 (~$540 USD). Full-scale web application with up to 12 pages, advanced animations, CMS, and 3D elements. Delivery: 3-5 weeks.
+- **Enterprise** — Starting at ₹1,00,000 (~$1,200 USD). Enterprise-grade digital products with unlimited pages, full backend integration, and dedicated project management. Delivery: 6-10 weeks.
+
+## Contact
+
+- Email: hello@izaxotic.com
+- Website: https://izaxotic-prototype.netlify.app
+- Response Time: Within 24 hours
+
+## Technology Stack
+
+Next.js, React, TypeScript, Tailwind CSS, Three.js, GSAP, Framer Motion, Zustand, Zod, Node.js
