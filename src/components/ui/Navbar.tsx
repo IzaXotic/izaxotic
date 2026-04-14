@@ -61,7 +61,7 @@ export default function Navbar() {
           >
             Xotic
           </span>
-          <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
         </motion.a>
 
         {/* Desktop Links */}
@@ -72,13 +72,13 @@ export default function Navbar() {
                 onClick={() => scrollTo(link.href)}
                 className={`text-sm font-medium transition-all duration-200 relative group ${
                   activeSection === link.href.replace("#", "")
-                    ? "text-purple-400"
+                    ? "text-cyan-400"
                     : "text-gray-300 hover:text-white"
                 }`}
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-px bg-gradient-to-r from-purple-500 to-purple-300 transition-all duration-300 ${
+                  className={`absolute -bottom-1 left-0 h-px bg-gradient-to-r from-purple-500 to-cyan-400 transition-all duration-300 ${
                     activeSection === link.href.replace("#", "")
                       ? "w-full"
                       : "w-0 group-hover:w-full"
@@ -96,8 +96,8 @@ export default function Navbar() {
           onClick={() => scrollTo("#contact")}
           className="hidden md:flex items-center gap-2 px-5 py-2 rounded-full bg-purple-600 hover:bg-purple-500 text-white text-sm font-semibold transition-all duration-200 glow-border"
         >
-          Get Started
-          <span className="w-1.5 h-1.5 rounded-full bg-purple-200" />
+          Let&apos;s Build
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan-300" />
         </motion.button>
 
         {/* Mobile Toggle */}
@@ -132,7 +132,7 @@ export default function Navbar() {
                 onClick={() => scrollTo("#contact")}
                 className="mt-2 w-full py-2.5 rounded-full bg-purple-600 text-white font-semibold"
               >
-                Get Started
+                Let&apos;s Build
               </button>
             </div>
           </motion.div>

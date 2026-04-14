@@ -1,8 +1,8 @@
 # IzaXotic
 
-> Premium custom web development & UI/UX design studio
+> Your Vision, Engineered Into Reality
 
-IzaXotic is a boutique digital agency that builds high-end, immersive web experiences from scratch. Every project is 100% custom-coded — no templates, no drag-and-drop builders, no shortcuts.
+IzaXotic is a code-first digital studio that turns bold ideas into immersive web experiences from scratch. Every project is 100% custom-coded — no templates, no drag-and-drop builders, no shortcuts. Every pixel placed, every function written — by hand.
 
 ## About
 

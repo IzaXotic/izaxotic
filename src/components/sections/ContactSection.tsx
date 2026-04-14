@@ -58,14 +58,14 @@ export default function ContactSection() {
           className="text-center mb-14"
         >
           <span className="inline-block px-4 py-1.5 rounded-full glass border border-purple-500/30 text-purple-300 text-xs uppercase tracking-widest font-medium mb-4">
-            Get in Touch
+            Let&apos;s Talk
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Start Your <span className="gradient-text">Project</span>
+            Ready to <span className="gradient-text">Build</span>?
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
-            Ready to build something extraordinary? Let&apos;s talk about your
-            vision and make it real.
+            Tell us what you&apos;re imagining. We&apos;ll handle the rest — from
+            design to deployment, every line hand-written for you.
           </p>
         </motion.div>
 

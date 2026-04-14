@@ -51,13 +51,13 @@ export default function LoadingScreen() {
                 opacity: [0.6, 1, 0.6],
               }}
               transition={{ repeat: Infinity, duration: 2 }}
-              className="w-24 h-24 rounded-full border-2 border-purple-500/30 absolute inset-0"
-              style={{ boxShadow: "0 0 50px rgba(124,58,237,0.5)" }}
+              className="w-24 h-24 rounded-full border-2 border-cyan-400/30 absolute inset-0"
+              style={{ boxShadow: "0 0 50px rgba(34,211,238,0.3), 0 0 30px rgba(124,58,237,0.4)" }}
             />
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, duration: 3, ease: "linear" }}
-              className="w-24 h-24 rounded-full border-t-2 border-purple-500"
+              className="w-24 h-24 rounded-full border-t-2 border-purple-500 border-r-2 border-r-cyan-400"
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="text-2xl font-bold gradient-text">IX</span>

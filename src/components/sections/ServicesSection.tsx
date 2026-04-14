@@ -185,10 +185,10 @@ export default function ServicesSection() {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full glass border border-purple-500/30 text-purple-300 text-xs uppercase tracking-widest font-medium mb-4">
-            What We Do
+            What We Build
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our <span className="gradient-text">Services</span>
+            Two Disciplines, <span className="gradient-text">One Studio</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
             We specialise in custom web development and UI/UX design — two

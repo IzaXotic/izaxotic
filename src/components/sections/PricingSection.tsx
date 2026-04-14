@@ -151,14 +151,14 @@ export default function PricingSection() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-purple-500/30 text-purple-300 text-xs uppercase tracking-widest font-medium mb-4">
             <Sparkles size={12} />
-            Transparent Pricing
+            No Hidden Costs
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Simple, <span className="gradient-text">Honest</span> Pricing
+            Invest in <span className="gradient-text">Real Code</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto mb-8">
-            No hidden fees. No surprises. Pick the plan that fits your ambition
-            — all prices in INR &amp; USD.
+            Every plan is 100% custom-coded to your spec. No page-builder markup,
+            no vendor lock-in — you own every line. Prices in INR &amp; USD.
           </p>
 
           {/* Billing toggle */}

@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   title: "IzaXotic — Premium Custom Web Development & UI/UX Design Studio",
   description:
     "IzaXotic crafts high-end, immersive digital experiences that feel alive. 100% custom-coded web development and UI/UX design studio — no templates, no drag-and-drop.",
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   keywords: [
     "web development",
     "UI/UX design",
@@ -33,7 +37,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "IzaXotic — Digital Experiences That Feel Alive",
+    title: "IzaXotic — Your Vision, Engineered Into Reality",
     description:
       "Premium custom web development & UI/UX design agency. 100% hand-coded, zero templates.",
     type: "website",
@@ -56,7 +60,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "IzaXotic",
   url: siteUrl,
-  logo: `${siteUrl}/favicon.ico`,
+  logo: `${siteUrl}/favicon.svg`,
   description:
     "Premium custom web development & UI/UX design studio crafting immersive digital experiences.",
   foundingDate: "2022",

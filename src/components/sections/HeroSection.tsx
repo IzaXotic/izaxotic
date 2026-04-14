@@ -43,7 +43,7 @@ export default function HeroSection() {
     <section
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: "radial-gradient(ellipse at 50% 60%, #1a0a3e 0%, #0B0B0F 70%)" }}
+      style={{ background: "radial-gradient(ellipse at 50% 60%, #1a0a3e 0%, #0B0B0F 60%), radial-gradient(ellipse at 80% 80%, rgba(34,211,238,0.06) 0%, transparent 50%)" }}
     >
       {/* Three.js canvas */}
       <div className="absolute inset-0 z-0">
@@ -70,7 +70,7 @@ export default function HeroSection() {
           <motion.div variants={itemVariants} className="mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-purple-500/30 text-purple-300 text-sm font-medium">
               <Sparkles size={14} className="text-purple-400" />
-              Premium Web Development & UI/UX Design
+              100% Hand-Coded · Zero Templates
             </span>
           </motion.div>
 
@@ -80,13 +80,13 @@ export default function HeroSection() {
             className="text-5xl md:text-7xl font-bold text-white leading-tight mb-6"
             style={{ fontFamily: "var(--font-display, sans-serif)" }}
           >
-            We Craft{" "}
-            <span className="gradient-text glow-text">Digital Experiences</span>
+            Your Vision,{" "}
+            <span className="gradient-text glow-text">Engineered</span>
             <br />
-            That Feel{" "}
+            Into{" "}
             <span className="relative inline-block">
-              <span className="text-purple-300">Alive</span>
-              <span className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-purple-500 to-transparent" />
+              <span className="text-cyan-300">Reality</span>
+              <span className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-cyan-400 to-transparent" />
             </span>
           </motion.h1>
 
@@ -95,10 +95,9 @@ export default function HeroSection() {
             variants={itemVariants}
             className="text-lg text-gray-400 mb-10 max-w-xl leading-relaxed"
           >
-            IzaXotic builds immersive, high-performance digital products that
-            push the boundaries of what&apos;s possible — combining cutting-edge
-            technology with stunning design. Every line of code is hand-written,
-            every pixel is intentional. No templates, no page-builders, no shortcuts.
+            We don&apos;t use Wix, Webflow, or WordPress. IzaXotic writes every
+            line of code from scratch — pixel-perfect design, blazing
+            performance, and experiences your users will remember.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -116,7 +115,7 @@ export default function HeroSection() {
               className="flex items-center gap-2 px-7 py-3.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white font-semibold text-base transition-all duration-200"
               style={{ boxShadow: "0 0 20px rgba(124,58,237,0.4)" }}
             >
-              Start a Project
+              Launch Your Project
               <ArrowRight size={17} />
             </motion.button>
 
@@ -126,7 +125,7 @@ export default function HeroSection() {
               onClick={scrollToPortfolio}
               className="flex items-center gap-2 px-7 py-3.5 rounded-full border border-purple-500/40 text-gray-200 hover:border-purple-400 hover:text-white font-semibold text-base transition-all duration-200 glass"
             >
-              View Portfolio
+              See Our Work
             </motion.button>
           </motion.div>
 
@@ -136,9 +135,9 @@ export default function HeroSection() {
             className="mt-14 flex flex-wrap gap-8"
           >
             {[
-              { value: "50+", label: "Projects Delivered" },
-              { value: "100%", label: "Client Satisfaction" },
-              { value: "2+", label: "Years of Excellence" },
+              { value: "50+", label: "Builds Shipped" },
+              { value: "0", label: "Templates Used" },
+              { value: "100%", label: "Custom Code" },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col">
                 <span className="text-3xl font-bold gradient-text">

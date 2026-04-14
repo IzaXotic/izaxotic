@@ -55,12 +55,12 @@ function FloatingSphere({ position, scale, speed }: { position: [number, number,
     <mesh ref={ref} position={position} scale={scale}>
       <icosahedronGeometry args={[1, 1]} />
       <meshStandardMaterial
-        color="#7C3AED"
+        color="#22D3EE"
         wireframe
         transparent
-        opacity={0.4}
-        emissive="#4C1D95"
-        emissiveIntensity={0.5}
+        opacity={0.35}
+        emissive="#7C3AED"
+        emissiveIntensity={0.4}
       />
     </mesh>
   );
@@ -83,8 +83,8 @@ function CentralOrb() {
       <torusKnotGeometry args={[1.2, 0.35, 200, 20]} />
       <meshStandardMaterial
         color="#7C3AED"
-        emissive="#4C1D95"
-        emissiveIntensity={1}
+        emissive="#0e7490"
+        emissiveIntensity={0.8}
         metalness={0.8}
         roughness={0.1}
         transparent
@@ -101,9 +101,9 @@ export default function HeroScene() {
       style={{ background: "transparent" }}
       gl={{ antialias: true, alpha: true }}
     >
-      <ambientLight intensity={0.2} />
+      <ambientLight intensity={0.15} />
       <pointLight position={[5, 5, 5]} intensity={2} color="#7C3AED" />
-      <pointLight position={[-5, -5, -5]} intensity={1} color="#A78BFA" />
+      <pointLight position={[-5, -5, -5]} intensity={1.5} color="#22D3EE" />
       <spotLight
         position={[0, 10, 0]}
         angle={0.5}
@@ -112,6 +112,7 @@ export default function HeroScene() {
         color="#7C3AED"
         castShadow
       />
+      <pointLight position={[0, -8, 3]} intensity={1} color="#22D3EE" />
 
       <ParticleField />
       <CentralOrb />

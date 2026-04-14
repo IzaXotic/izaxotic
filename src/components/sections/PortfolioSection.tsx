@@ -105,10 +105,10 @@ export default function PortfolioSection() {
           className="text-center mb-14"
         >
           <span className="inline-block px-4 py-1.5 rounded-full glass border border-purple-500/30 text-purple-300 text-xs uppercase tracking-widest font-medium mb-4">
-            Our Work
+            Selected Work
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Featured <span className="gradient-text">Portfolio</span>
+            Proof in Every <span className="gradient-text">Pixel</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto">
             A curated selection of our finest web development and design projects
