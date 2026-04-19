@@ -73,7 +73,7 @@ const organizationSchema = {
   founder: {
     "@type": "Person",
     name: "Prem IzaX",
-    jobTitle: "CEO & Founder",
+    jobTitle: "Founder",
   },
   contactPoint: {
     "@type": "ContactPoint",

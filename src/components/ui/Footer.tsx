@@ -1,5 +1,6 @@
 "use client";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import IXMark from "@/components/ui/IXMark";
 
 interface NavLink {
@@ -23,6 +24,7 @@ const navCols: NavCol[] = [
       { label: "Work", href: "#portfolio" },
       { label: "Pricing", href: "#pricing" },
       { label: "About", href: "#about" },
+      { label: "Careers", href: "/careers" },
       { label: "Contact", href: "#contact" },
     ],
   },

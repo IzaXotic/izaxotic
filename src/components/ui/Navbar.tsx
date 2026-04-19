@@ -2,14 +2,15 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { useAppStore } from "@/store/useAppStore";
 
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Work", href: "#portfolio" },
   { label: "About", href: "#about" },
+  { label: "Careers", href: "/careers" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -80,8 +81,18 @@ export default function Navbar() {
                 style={{ background: "rgba(5,5,7,0.6)", border: "1px solid rgba(124,58,237,0.08)" }}
               >
                 {navLinks.map((link) => {
+                  const isPage = !link.href.startsWith("#");
                   const isActive = activeSection === link.href.replace("#", "");
-                  return (
+                  return isPage ? (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="relative px-4 py-1.5 text-sm font-medium transition-colors duration-200 text-gray-500 hover:text-gray-200"
+                      data-cursor-hover
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
                     <button
                       key={link.href}
                       onClick={() => scrollTo(link.href)}
@@ -155,22 +166,25 @@ export default function Navbar() {
             style={{ background: "rgba(5,5,7,0.97)" }}
           >
             <div className="flex flex-col items-center justify-center h-full gap-2 px-8 relative z-10">
-              {navLinks.map((link, i) => (
-                <motion.button
-                  key={link.href}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 30 }}
-                  transition={{ delay: i * 0.06 }}
-                  onClick={() => scrollTo(link.href)}
-                  className={`text-3xl font-bold transition-colors py-3 ${
-                    activeSection === link.href.replace("#", "") ? "gradient-text" : "text-gray-500 hover:text-white"
-                  }`}
-                >
-                  <span className="text-purple-700/50 text-base font-mono mr-3">0{i + 1}</span>
-                  {link.label}
-                </motion.button>
-              ))}
+              {navLinks.map((link, i) => {
+                const isPage = !link.href.startsWith("#");
+                return isPage ? (
+                  <motion.div key={link.href} initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 30 }} transition={{ delay: i * 0.06 }}>
+                    <Link href={link.href} onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-3xl font-bold text-gray-500 hover:text-white transition-colors py-3 block">
+                      <span className="text-purple-700/50 text-base font-mono mr-3">0{i + 1}</span>
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ) : (
+                  <motion.button key={link.href} initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 30 }} transition={{ delay: i * 0.06 }}
+                    onClick={() => scrollTo(link.href)}
+                    className={`text-3xl font-bold transition-colors py-3 ${activeSection === link.href.replace("#", "") ? "gradient-text" : "text-gray-500 hover:text-white"}`}>
+                    <span className="text-purple-700/50 text-base font-mono mr-3">0{i + 1}</span>
+                    {link.label}
+                  </motion.button>
+                );
+              })}
               <motion.button
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

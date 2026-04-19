@@ -141,7 +141,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <p className="text-white text-sm font-semibold">Prem IzaX</p>
-                    <p className="text-gray-500 text-xs font-mono">CEO & Founder</p>
+                    <p className="text-gray-500 text-xs font-mono">Founder</p>
                   </div>
                 </div>
               </div>
