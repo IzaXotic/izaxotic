@@ -3,25 +3,25 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAppStore } from "@/store/useAppStore";
 
+const LOADING_STEPS = [
+  { p: 20, t: "Loading assets..." },
+  { p: 45, t: "Building 3D scene..." },
+  { p: 70, t: "Crafting experience..." },
+  { p: 90, t: "Almost there..." },
+  { p: 100, t: "Welcome to IzaXotic" },
+];
+
 export default function LoadingScreen() {
   const { isLoading, setIsLoading } = useAppStore();
   const [progress, setProgress] = useState(0);
   const [text, setText] = useState("Initialising...");
 
-  const steps = [
-    { p: 20, t: "Loading assets..." },
-    { p: 45, t: "Building 3D scene..." },
-    { p: 70, t: "Crafting experience..." },
-    { p: 90, t: "Almost there..." },
-    { p: 100, t: "Welcome to IzaXotic" },
-  ];
-
   useEffect(() => {
     let i = 0;
     const interval = setInterval(() => {
-      if (i < steps.length) {
-        setProgress(steps[i].p);
-        setText(steps[i].t);
+      if (i < LOADING_STEPS.length) {
+        setProgress(LOADING_STEPS[i].p);
+        setText(LOADING_STEPS[i].t);
         i++;
       } else {
         clearInterval(interval);
@@ -29,8 +29,7 @@ export default function LoadingScreen() {
       }
     }, 400);
     return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [setIsLoading]);
 
   return (
     <AnimatePresence>

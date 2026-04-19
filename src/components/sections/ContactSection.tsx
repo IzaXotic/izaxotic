@@ -44,7 +44,6 @@ export default function ContactSection() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     await new Promise((r) => setTimeout(r, 1500));
-    console.log("Form submitted:", data);
     setIsSubmitting(false);
     setSubmitted(true);
     reset();

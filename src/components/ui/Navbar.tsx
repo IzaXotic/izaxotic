@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
@@ -17,6 +18,9 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const { isMobileMenuOpen, setIsMobileMenuOpen, activeSection } = useAppStore();
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -26,8 +30,13 @@ export default function Navbar() {
 
   const scrollTo = (href: string) => {
     setIsMobileMenuOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (isHome) {
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // Navigate to home page with the hash — browser will scroll on load
+      router.push(`/${href}`);
+    }
   };
 
   return (
@@ -50,8 +59,8 @@ export default function Navbar() {
           >
             {/* Logo — HUD */}
             <motion.a
-              href="#home"
-              onClick={(e) => { e.preventDefault(); scrollTo("#home"); }}
+              href={isHome ? "#home" : "/"}
+              onClick={(e) => { e.preventDefault(); isHome ? scrollTo("#home") : router.push("/"); }}
               whileHover={{ scale: 1.05 }}
               className="flex items-center gap-2 select-none group"
             >
