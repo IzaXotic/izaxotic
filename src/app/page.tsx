@@ -29,9 +29,8 @@ export default function Home() {
         <h1>IzaXotic — Custom Web Development &amp; UI/UX Design Studio</h1>
         <p>
           IzaXotic is a premium web development and UI/UX design studio that builds
-          high-end, custom-coded websites and web applications from scratch. We do
-          not use templates, page builders, or drag-and-drop tools. Every project is
-          hand-coded with Next.js, React, TypeScript, Three.js, and modern web
+          high-end, custom-developed websites and web applications from scratch. Every
+          project is built with Next.js, React, TypeScript, Three.js, and modern web
           technologies. Our services include custom web application development,
           UI/UX design systems, interactive 3D experiences, performance optimisation,
           SEO audits, CMS dashboards, and ongoing maintenance. Based in India,

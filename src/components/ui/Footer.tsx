@@ -26,17 +26,19 @@ const navCols: NavCol[] = [
       { label: "Contact", href: "#contact" },
     ],
   },
+];
+
+const socials = [
   {
-    heading: "Connect",
-    code: "NAV://EXT",
-    links: [
-      { label: "Facebook", href: "https://www.facebook.com/izaxotic", ext: true },
-      { label: "Instagram", href: "https://www.instagram.com/izaxotic", ext: true },
-      { label: "LinkedIn", href: "https://www.linkedin.com/company/izaxotic", ext: true },
-      { label: "X (Twitter)", href: "https://x.com/izaxotic", ext: true },
-      { label: "YouTube", href: "https://youtube.com/@izaxotic", ext: true },
-      { label: "GitHub", href: "https://github.com/IzaXotic", ext: true },
-    ],
+    label: "Instagram",
+    href: "https://www.instagram.com/izaxotic.official/",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+      </svg>
+    ),
   },
 ];
 
@@ -80,7 +82,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-gray-500 text-xs leading-relaxed max-w-[200px]">
-              Code-first studio. Bold visions, hand-built. No templates, no&nbsp;shortcuts.
+              Custom development studio. Bold visions, built&nbsp;right.
             </p>
             <span className="block text-[8px] font-mono text-purple-800/40 tracking-widest mt-3">SYS://IZAXOTIC v2.0</span>
           </div>
@@ -112,6 +114,23 @@ export default function Footer() {
             </div>
           ))}
 
+          {/* Connect — social icons */}
+          <div>
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-[10px] text-purple-400/70 uppercase tracking-[0.3em] font-semibold font-mono">Connect</p>
+              <span className="text-[7px] font-mono text-purple-800/30 tracking-widest">NAV://EXT</span>
+            </div>
+            <div className="flex items-center gap-3">
+              {socials.map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+                  className="flex items-center justify-center w-9 h-9 rounded-lg text-gray-500 hover:text-purple-300 transition-all duration-200 hover:shadow-[0_0_14px_rgba(124,58,237,0.25)]"
+                  style={{ background: "rgba(124,58,237,0.06)", border: "1px solid rgba(124,58,237,0.1)" }}>
+                  {s.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
           {/* CTA block */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center justify-between mb-4">
@@ -138,7 +157,7 @@ export default function Footer() {
               <button onClick={() => window.location.href = `mailto:${emailUser}@${emailDomain}`} className="hover:text-purple-400 transition-colors">{emailUser}@{emailDomain}</button>
             </div>
             <span className="text-[11px] text-gray-700 font-mono">
-              Hand-coded with intent. <span className="hud-blink" />
+              Made with ♥ by IzaXotic <span className="hud-blink" />
             </span>
           </div>
         </div>

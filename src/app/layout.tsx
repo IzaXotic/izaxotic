@@ -18,7 +18,7 @@ const siteUrl = "https://izaxotic-prototype.netlify.app";
 export const metadata: Metadata = {
   title: "IzaXotic — Custom Web Development & UI/UX Studio",
   description:
-    "IzaXotic builds high-end, custom-coded websites & web apps. 100% hand-written code — no templates, no shortcuts.",
+    "IzaXotic builds high-end, custom-developed websites & web apps. Every project crafted with intent.",
   icons: {
     icon: "/favicon.svg",
     apple: "/favicon.svg",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "IzaXotic — Your Vision, Engineered Into Reality",
     description:
-      "Custom web development & UI/UX design agency. Hand-coded, zero templates.",
+      "Custom web development & UI/UX design agency. Built with intent.",
     type: "website",
     url: siteUrl,
     siteName: "IzaXotic",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "IzaXotic — Custom Web Development & UI/UX Studio",
     description:
-      "High-end, custom-coded digital experiences. No templates, no drag-and-drop.",
+      "High-end, custom-developed digital experiences. Crafted with intent.",
   },
   robots: { index: true, follow: true },
 };
@@ -82,11 +82,7 @@ const organizationSchema = {
     availableLanguage: ["English"],
   },
   sameAs: [
-    "https://www.facebook.com/izaxotic",
-    "https://www.instagram.com/izaxotic",
-    "https://www.linkedin.com/company/izaxotic",
-    "https://x.com/izaxotic",
-    "https://youtube.com/@izaxotic",
+    "https://www.instagram.com/izaxotic.official/",
   ],
 };
 

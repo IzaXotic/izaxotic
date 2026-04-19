@@ -3,7 +3,6 @@ import { useState, useRef } from "react";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, X, ArrowRight } from "lucide-react";
-import { useParallax } from "@/hooks/useParallax";
 
 const FloatingGrid = dynamic(() => import("@/components/three/FloatingGrid"), { ssr: false });
 
@@ -129,27 +128,22 @@ function ProjectCard({ project, onSelect, size = "default" }: {
 export default function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[0] | null>(null);
-  const { ref, bgY, midY, fgY, bgX, opacity } = useParallax();
 
   const filtered = activeFilter === "all" ? projects : projects.filter((p) => p.category === activeFilter);
   const featured = filtered.find((p) => p.featured) || filtered[0];
   const rest = filtered.filter((p) => p.id !== featured?.id);
 
   return (
-    <section ref={ref as React.RefObject<HTMLElement>} id="portfolio" aria-label="Portfolio and case studies" className="section-padding relative scanlines">
-      {/* 3D grid background — slow parallax */}
-      <motion.div style={{ y: bgY, x: bgX }} className="absolute inset-0 z-0">
-        <FloatingGrid className="opacity-25" />
-      </motion.div>
+    <section id="portfolio" aria-label="Portfolio and case studies" className="section-padding relative scanlines">
+      {/* 3D grid background */}
+      <FloatingGrid className="opacity-25" />
       <div className="absolute inset-0 noise-grain pointer-events-none" />
 
-      {/* Circuit connector — mid parallax */}
-      <motion.div style={{ y: midY }} className="absolute top-0 left-1/2 -translate-x-1/2">
-        <div className="w-px h-20 bg-gradient-to-b from-purple-500/25 to-transparent" />
-        <div className="w-2 h-2 rounded-full bg-purple-500/40 -ml-[3px] -mt-px" style={{ boxShadow: "0 0 8px rgba(124,58,237,0.25)" }} />
-      </motion.div>
+      {/* Circuit connector */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-purple-500/25 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-purple-500/40" style={{ boxShadow: "0 0 8px rgba(124,58,237,0.25)" }} />
 
-      <motion.div className="max-w-7xl mx-auto relative z-10" style={{ y: fgY, opacity }}>
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
@@ -201,7 +195,7 @@ export default function PortfolioSection() {
             ))}
           </AnimatePresence>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Modal */}
       <AnimatePresence>
