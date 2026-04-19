@@ -11,12 +11,12 @@ type BillingCycle = "oneoff" | "retainer";
 
 const plans = [
   {
-    id: "essential", name: "Essential", icon: Zap, tagline: "Custom-coded presence for small businesses",
+    id: "essential", name: "Essential", icon: Zap, tagline: "Perfect launchpad for startups & small businesses",
     color: "#6D28D9", glowColor: "rgba(109,40,217,0.4)", badge: null,
-    oneoff: { inr: 15000, usd: 180 }, retainer: { inr: 5000, usd: 60 }, retainerNote: "/mo maintenance",
-    description: "A fully hand-coded, pixel-perfect website built from scratch. Zero templates. Zero drag-and-drop. Pure code.",
+    oneoff: { inr: 9999, usd: 120 }, retainer: { inr: 2999, usd: 36 }, retainerNote: "/mo maintenance",
+    description: "A fully custom-built, pixel-perfect website crafted from scratch. Clean code, thoughtful design.",
     features: [
-      { label: "100% custom coded (no Wix/Webflow)", included: true },
+      { label: "100% custom developed", included: true },
       { label: "Up to 5 custom-designed pages", included: true },
       { label: "Mobile-first responsive layout", included: true },
       { label: "Custom UI design (Figma → Code)", included: true },
@@ -32,12 +32,12 @@ const plans = [
     cta: "Get Started", delivery: "1–2 weeks", code: "PLAN_ESS",
   },
   {
-    id: "professional", name: "Professional", icon: Star, tagline: "Premium custom build for growing brands",
+    id: "professional", name: "Professional", icon: Star, tagline: "Premium build for growing brands & startups",
     color: "#7C3AED", glowColor: "rgba(124,58,237,0.6)", badge: "Most Popular",
-    oneoff: { inr: 45000, usd: 540 }, retainer: { inr: 8000, usd: 96 }, retainerNote: "/mo maintenance",
+    oneoff: { inr: 29999, usd: 360 }, retainer: { inr: 5999, usd: 72 }, retainerNote: "/mo maintenance",
     description: "A full-scale custom web application — hand-crafted design, advanced animations, and production-grade code.",
     features: [
-      { label: "100% custom coded (no templates)", included: true },
+      { label: "100% custom developed", included: true },
       { label: "Up to 12 custom-designed pages", included: true },
       { label: "Mobile-first responsive layout", included: true },
       { label: "Advanced UI/UX design system", included: true },
@@ -53,9 +53,9 @@ const plans = [
     cta: "Start Build", delivery: "3–5 weeks", code: "PLAN_PRO",
   },
   {
-    id: "enterprise", name: "Enterprise", icon: Crown, tagline: "Full-scale custom web application",
+    id: "enterprise", name: "Enterprise", icon: Crown, tagline: "Full-scale custom application for serious businesses",
     color: "#A78BFA", glowColor: "rgba(167,139,250,0.5)", badge: "Best Value",
-    oneoff: { inr: 100000, usd: 1200 }, retainer: { inr: 15000, usd: 180 }, retainerNote: "/mo maintenance",
+    oneoff: { inr: 74999, usd: 900 }, retainer: { inr: 11999, usd: 144 }, retainerNote: "/mo maintenance",
     description: "Complex, enterprise-grade digital products built entirely to spec. Custom architecture, full 3D world, backend systems.",
     features: [
       { label: "100% custom coded — built to your spec", included: true },
@@ -76,14 +76,14 @@ const plans = [
 ];
 
 const addons = [
-  { label: "Extra Revision Round", inr: 2000, usd: 24 },
-  { label: "Logo & Brand Identity Design", inr: 12000, usd: 144 },
-  { label: "Monthly Maintenance & Hosting Mgmt", inr: 4000, usd: 48 },
-  { label: "Speed & SEO Optimisation Audit", inr: 8000, usd: 96 },
-  { label: "AI Chatbot Integration", inr: 18000, usd: 216 },
-  { label: "Blog / News CMS Setup", inr: 10000, usd: 120 },
-  { label: "E-commerce / Payment Gateway", inr: 25000, usd: 300 },
-  { label: "Multi-language (i18n) Support", inr: 9000, usd: 108 },
+  { label: "Extra Revision Round" },
+  { label: "Logo & Brand Identity Design" },
+  { label: "Monthly Maintenance & Hosting Mgmt" },
+  { label: "Speed & SEO Optimisation Audit" },
+  { label: "AI Chatbot Integration" },
+  { label: "Blog / News CMS Setup" },
+  { label: "E-commerce / Payment Gateway" },
+  { label: "Multi-language (i18n) Support" },
 ];
 
 function formatINR(amount: number) {
@@ -263,8 +263,7 @@ export default function PricingSection() {
                   <span className="text-sm text-gray-300 font-medium">{addon.label}</span>
                 </div>
                 <div className="text-right flex-shrink-0 ml-3">
-                  <p className="text-purple-300 font-bold text-sm font-mono">{formatINR(addon.inr)}</p>
-                  <p className="text-gray-600 text-xs font-mono">≈ ${addon.usd}</p>
+                  <p className="text-purple-400/80 text-xs font-mono uppercase tracking-wider">Contact for pricing</p>
                 </div>
               </motion.div>
             ))}

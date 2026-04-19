@@ -14,8 +14,8 @@ const timeline = [
 ];
 
 const team = [
-  { name: "Prem IzaX", role: "Founder & Lead Engineer", initials: "PI" },
-  { name: "Pauline Hannah", role: "Co-Founder & Principal Designer", initials: "PH" },
+  { role: "Founder & Lead Engineer", initials: "PI" },
+  { role: "Co-Founder & Principal Designer", initials: "PH" },
 ];
 
 export default function AboutSection() {
@@ -44,7 +44,7 @@ export default function AboutSection() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
             Built by Engineers, <span className="gradient-text glitch-text" data-text="Guided by Design">Guided by Design</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl text-sm">We craft digital products with a strict focus on clarity, performance, and timeless design — all written by hand, no templates.</p>
+          <p className="text-gray-400 max-w-2xl text-sm">We craft digital products with a strict focus on clarity, performance, and timeless design — custom-built for every client.</p>
         </motion.div>
 
         <div className="grid lg:grid-cols-12 gap-8 items-start">
@@ -101,15 +101,14 @@ export default function AboutSection() {
               </div>
               <div className="space-y-4 relative z-10">
                 {team.map((m) => (
-                  <div key={m.name} className="flex items-start gap-3 p-3 rounded-xl transition-colors hover:bg-purple-500/[0.03]"
+                  <div key={m.role} className="flex items-start gap-3 p-3 rounded-xl transition-colors hover:bg-purple-500/[0.03]"
                     style={{ border: "1px solid rgba(124,58,237,0.04)" }}>
                     <div className="w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0"
                       style={{ background: "linear-gradient(135deg, rgba(124,58,237,0.3), rgba(76,29,149,0.5))", border: "1px solid rgba(124,58,237,0.2)", boxShadow: "0 0 12px rgba(124,58,237,0.1)" }}>
                       <span className="text-xs font-bold text-white font-mono">{m.initials}</span>
                     </div>
                     <div>
-                      <p className="text-white font-medium">{m.name}</p>
-                      <p className="text-gray-500 text-sm font-mono">{m.role}</p>
+                      <p className="text-gray-400 text-sm font-mono">{m.role}</p>
                     </div>
                   </div>
                 ))}

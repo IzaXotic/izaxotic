@@ -72,7 +72,7 @@ export default function HeroSection() {
           <motion.div variants={itemVariants} className="mb-6">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-purple-500/30 text-purple-300 text-sm font-medium">
               <IXMark size={16} />
-              100% Hand-Coded · Zero Templates
+              100% Custom-Built · Crafted with Intent
             </span>
           </motion.div>
 
@@ -97,10 +97,10 @@ export default function HeroSection() {
             variants={itemVariants}
             className="text-lg text-gray-400 mb-10 max-w-xl leading-relaxed"
           >
-            We don&apos;t use Wix, Webflow, or WordPress. IzaXotic writes every
-            line of code from scratch — custom web development with pixel-perfect
-            design, blazing performance, SEO optimisation, and digital experiences
-            your users will remember. Based in India, building for the world.
+            IzaXotic builds every project from the ground up — custom web
+            development with pixel-perfect design, blazing performance, SEO
+            optimisation, and digital experiences your users will remember.
+            Based in India, building for the world.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -141,8 +141,8 @@ export default function HeroSection() {
           >
             {[
               { value: "50+", label: "Builds Shipped" },
-              { value: "0", label: "Templates Used" },
               { value: "100%", label: "Custom Code" },
+              { value: "<24h", label: "Response Time" },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col">
                 <span className="text-3xl font-bold gradient-text">

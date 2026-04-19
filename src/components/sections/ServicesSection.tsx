@@ -201,7 +201,6 @@ export default function ServicesSection() {
           className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { value: "50+", label: "Builds Shipped", code: "0x032" },
-            { value: "0", label: "Templates Used", code: "0x000" },
             { value: "100%", label: "Custom Code", code: "0xFFF" },
             { value: "<24h", label: "Response Time", code: "0x018" },
           ].map((s) => (
