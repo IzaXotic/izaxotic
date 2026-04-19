@@ -17,7 +17,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const { isMobileMenuOpen, setIsMobileMenuOpen, activeSection } = useAppStore();
+  const { isMobileMenuOpen, setIsMobileMenuOpen, activeSection, setActiveSection } = useAppStore();
   const pathname = usePathname();
   const router = useRouter();
   const isHome = pathname === "/";
@@ -27,6 +27,27 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Scroll-spy: update activeSection as sections enter viewport
+  useEffect(() => {
+    if (!isHome) return;
+    const sectionIds = navLinks
+      .filter((l) => l.href.startsWith("#"))
+      .map((l) => l.href.replace("#", ""));
+
+    const observers: IntersectionObserver[] = [];
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setActiveSection(id); },
+        { threshold: 0.35 }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach((obs) => obs.disconnect());
+  }, [isHome, setActiveSection]);
 
   const scrollTo = (href: string) => {
     setIsMobileMenuOpen(false);
