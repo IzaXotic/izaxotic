@@ -46,9 +46,9 @@ export default function ContactSection() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      const result = await res.json();
       if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.error || "Failed to send");
+        throw new Error(result.error || "Failed to send");
       }
       setSubmitted(true);
       reset();
