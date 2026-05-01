@@ -1,14 +1,11 @@
 "use client";
 import { useState, useRef } from "react";
-import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Send, CheckCircle, MapPin, Mail, Clock } from "lucide-react";
 import IXMark from "@/components/ui/IXMark";
-
-const GlowOrb = dynamic(() => import("@/components/three/GlowOrb"), { ssr: false });
 
 const schema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -57,12 +54,13 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" aria-label="Contact IzaXotic" className="section-padding relative overflow-hidden scanlines">
-      {/* 3D glow orb background */}
-      <GlowOrb size={1.5} color="#7C3AED" pulseSpeed={0.6} className="opacity-25" />
+    <section id="contact" aria-label="Contact IzaXotic" className="section-padding relative overflow-hidden">
+      {/* CSS ambient glow instead of Three.js */}
+      <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] rounded-full bg-purple-700/5 blur-[180px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-fuchsia-600/4 blur-[150px] pointer-events-none" />
       <div className="absolute inset-0 noise-grain pointer-events-none" />
 
-      {/* Circuit connector */}
+      {/* Section connector */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-purple-500/25 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-purple-500/40" style={{ boxShadow: "0 0 8px rgba(124,58,237,0.25)" }} />
 
@@ -77,7 +75,7 @@ export default function ContactSection() {
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Ready to <span className="gradient-text glitch-text" data-text="Build">Build</span>?
+              Ready to <span className="gradient-text">Build</span>?
             </h2>
             <p className="text-gray-400 leading-relaxed">
               Tell us what you&apos;re imagining. We&apos;ll handle the rest — from design to deployment, every line hand-written for you.

@@ -1,11 +1,8 @@
 "use client";
 import { useState } from "react";
-import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, Zap, Star, Crown, ArrowRight } from "lucide-react";
 import IXMark from "@/components/ui/IXMark";
-
-const WarpTunnel = dynamic(() => import("@/components/three/WarpTunnel"), { ssr: false });
 
 type BillingCycle = "oneoff" | "retainer";
 
@@ -98,12 +95,16 @@ export default function PricingSection() {
   };
 
   return (
-    <section id="pricing" aria-label="Pricing plans and packages" className="section-padding relative overflow-hidden scanlines">
-      {/* 3D warp tunnel background */}
-      <WarpTunnel color="#7c3aed" speed={0.3} className="opacity-30" />
+    <section id="pricing" aria-label="Pricing plans and packages" className="section-padding relative overflow-hidden">
+      {/* CSS ambient backgrounds instead of Three.js */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: "radial-gradient(ellipse at 50% 20%, rgba(124,58,237,0.04) 0%, transparent 60%)",
+      }} />
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-purple-700/4 blur-[180px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] rounded-full bg-fuchsia-600/3 blur-[150px] pointer-events-none" />
       <div className="absolute inset-0 noise-grain pointer-events-none" />
 
-      {/* Circuit connector */}
+      {/* Section connector */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-purple-500/25 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-purple-500/40" style={{ boxShadow: "0 0 8px rgba(124,58,237,0.25)" }} />
 
@@ -116,7 +117,7 @@ export default function PricingSection() {
             SYS://PRICING — TRANSPARENT
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Invest in <span className="gradient-text glitch-text" data-text="Real Code">Real Code</span>
+            Invest in <span className="gradient-text">Real Code</span>
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto mb-8 text-sm">
             Every plan is 100% custom-coded to your spec. No page-builder markup, no vendor lock-in — you own every line.

@@ -1,11 +1,7 @@
 "use client";
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Briefcase, Code2, Palette } from "lucide-react";
 import IXMark from "@/components/ui/IXMark";
-
-const GlowOrb = dynamic(() => import("@/components/three/GlowOrb"), { ssr: false });
-const ParticleField = dynamic(() => import("@/components/three/ParticleField"), { ssr: false });
 
 const timeline = [
   { year: "2019", title: "Founded", text: "Started as a two-person studio focused on handcrafted web products.", code: "EVT_001" },
@@ -40,17 +36,16 @@ const openRoles = [
 
 export default function AboutSection() {
   return (
-    <section id="about" aria-label="About IzaXotic studio" className="section-padding relative overflow-hidden scanlines">
-      {/* 3D backgrounds */}
-      <ParticleField count={300} color="#7c3aed" speed={0.08} className="opacity-25 pointer-events-none" />
-      <div className="absolute right-0 top-0 w-80 h-80 pointer-events-none opacity-60">
-        <GlowOrb size={1.2} color="#A78BFA" pulseSpeed={0.8} />
-      </div>
+    <section id="about" aria-label="About IzaXotic studio" className="section-padding relative overflow-hidden">
+      {/* CSS ambient glow instead of Three.js */}
+      <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full bg-purple-700/5 blur-[180px] pointer-events-none" />
+      <div className="absolute right-0 top-0 w-[400px] h-[400px] rounded-full bg-purple-500/4 blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/3 w-[300px] h-[300px] rounded-full bg-fuchsia-600/4 blur-[120px] pointer-events-none" />
 
-      {/* Grid bg */}
+      {/* Noise grain */}
       <div className="absolute inset-0 noise-grain pointer-events-none" />
 
-      {/* Circuit connector */}
+      {/* Section connector */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-purple-500/25 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-purple-500/40" style={{ boxShadow: "0 0 8px rgba(124,58,237,0.25)" }} />
 
@@ -62,7 +57,7 @@ export default function AboutSection() {
             SYS://ABOUT — DECODED
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
-            Built by Engineers, <span className="gradient-text glitch-text" data-text="Guided by Design">Guided by Design</span>
+            Built by Engineers, <span className="gradient-text">Guided by Design</span>
           </h2>
           <p className="text-gray-400 max-w-2xl text-sm">We craft digital products with a strict focus on clarity, performance, and timeless design — custom-built for every client.</p>
         </motion.div>

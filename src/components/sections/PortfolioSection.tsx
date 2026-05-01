@@ -1,10 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
-import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, X, ArrowRight } from "lucide-react";
-
-const FloatingGrid = dynamic(() => import("@/components/three/FloatingGrid"), { ssr: false });
 
 const projects = [
   { id: 1, title: "NovaPay Dashboard", category: "web-dev", tags: ["React", "Next.js", "TypeScript"],
@@ -134,12 +131,16 @@ export default function PortfolioSection() {
   const rest = filtered.filter((p) => p.id !== featured?.id);
 
   return (
-    <section id="portfolio" aria-label="Portfolio and case studies" className="section-padding relative scanlines">
-      {/* 3D grid background */}
-      <FloatingGrid className="opacity-25" />
+    <section id="portfolio" aria-label="Portfolio and case studies" className="section-padding relative">
+      {/* CSS grid background instead of Three.js */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{
+        backgroundImage: "linear-gradient(rgba(124,58,237,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,0.3) 1px, transparent 1px)",
+        backgroundSize: "40px 40px",
+      }} />
+      <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full bg-purple-700/5 blur-[180px] pointer-events-none" />
       <div className="absolute inset-0 noise-grain pointer-events-none" />
 
-      {/* Circuit connector */}
+      {/* Section connector */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-purple-500/25 to-transparent" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-purple-500/40" style={{ boxShadow: "0 0 8px rgba(124,58,237,0.25)" }} />
 
@@ -154,7 +155,7 @@ export default function PortfolioSection() {
               SYS://PORTFOLIO — LOADED
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-3">
-              Proof in Every <span className="gradient-text glitch-text" data-text="Pixel">Pixel</span>
+              Proof in Every <span className="gradient-text">Pixel</span>
             </h2>
             <p className="text-gray-500 max-w-lg text-sm">
               A curated selection of our finest projects — each one a story of craft, collaboration, and measurable impact.
