@@ -111,7 +111,7 @@ export default function PricingSection() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-[10px] uppercase tracking-[0.3em] font-mono mb-4"
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-sm uppercase tracking-[0.3em] font-mono mb-4"
             style={{ background: "rgba(124,58,237,0.06)", border: "1px solid rgba(124,58,237,0.12)" }}>
             <IXMark size={14} />
             SYS://PRICING — TRANSPARENT
@@ -183,7 +183,7 @@ export default function PricingSection() {
                     </div>
                     <div>
                       <h3 className="text-white font-bold text-xl leading-none">{plan.name}</h3>
-                      <p className="text-[10px] text-gray-600 mt-0.5 font-mono">{plan.tagline}</p>
+                      <p className="text-sm text-gray-600 mt-0.5 font-mono">{plan.tagline}</p>
                     </div>
                   </div>
 
@@ -195,16 +195,16 @@ export default function PricingSection() {
                       </div>
                       <div className="flex items-center gap-2 mt-1">
                         <span className="text-gray-500 text-sm font-mono">≈ ${price.usd} USD</span>
-                        <span className="text-gray-600 text-xs font-mono">{billing === "retainer" ? "/ month" : "/ project"}</span>
+                        <span className="text-gray-600 text-sm font-mono">{billing === "retainer" ? "/ month" : "/ project"}</span>
                       </div>
                       {billing === "retainer" && (
-                        <p className="text-green-400 text-xs mt-1 font-medium font-mono">🔄 Ongoing support</p>
+                        <p className="text-green-400 text-sm mt-1 font-medium font-mono">🔄 Ongoing support</p>
                       )}
                     </motion.div>
                   </AnimatePresence>
 
                   {/* Delivery */}
-                  <div className="inline-flex items-center gap-1.5 text-[10px] px-3 py-1 rounded-full mb-5 w-fit font-mono"
+                  <div className="inline-flex items-center gap-1.5 text-sm px-3 py-1 rounded-full mb-5 w-fit font-mono"
                     style={{ background: `${plan.color}0a`, border: `1px solid ${plan.color}18`, color: plan.color }}>
                     <Zap size={10} />
                     ETA: {plan.delivery}
@@ -264,7 +264,7 @@ export default function PricingSection() {
                   <span className="text-sm text-gray-300 font-medium">{addon.label}</span>
                 </div>
                 <div className="text-right flex-shrink-0 ml-3">
-                  <p className="text-purple-400/80 text-xs font-mono uppercase tracking-wider">Contact for pricing</p>
+                  <p className="text-purple-400/80 text-sm font-mono uppercase tracking-wider">Contact for pricing</p>
                 </div>
               </motion.div>
             ))}

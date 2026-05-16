@@ -18,7 +18,7 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-red-400/80 text-[10px] uppercase tracking-[0.3em] font-mono mb-6"
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-red-400/80 text-sm uppercase tracking-[0.3em] font-mono mb-6"
           style={{
             background: "rgba(239,68,68,0.06)",
             border: "1px solid rgba(239,68,68,0.15)",
@@ -93,7 +93,7 @@ export default function NotFound() {
           transition={{ duration: 0.5, delay: 0.7 }}
           className="mt-10 pt-8 border-t border-purple-900/15"
         >
-          <p className="text-[10px] text-gray-600 uppercase tracking-[0.2em] font-mono mb-4">
+          <p className="text-sm text-gray-600 uppercase tracking-[0.2em] font-mono mb-4">
             Quick Navigation
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -123,7 +123,7 @@ export default function NotFound() {
           className="mt-8 flex items-center justify-center gap-2"
         >
           <IXMark size={12} animate={false} />
-          <span className="text-[10px] font-mono text-gray-700 tracking-widest">
+          <span className="text-sm font-mono text-gray-700 tracking-widest">
             IZAXOTIC SYSTEMS
           </span>
         </motion.div>

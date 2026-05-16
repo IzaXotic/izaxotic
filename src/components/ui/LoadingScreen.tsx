@@ -93,7 +93,7 @@ export default function LoadingScreen() {
               transition={{ duration: 0.4 }}
             />
           </div>
-          <p className="text-xs text-purple-500 mt-2">{progress}%</p>
+          <p className="text-sm text-purple-500 mt-2">{progress}%</p>
         </motion.div>
       )}
     </AnimatePresence>

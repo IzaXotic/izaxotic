@@ -102,7 +102,7 @@ function ServiceCard({ service, isActive, onActivate, index }: {
               <div key={f.label} className="flex items-center gap-2 px-3 py-2.5 rounded-xl"
                 style={{ background: `${service.color}05`, border: `1px solid ${service.color}0a` }}>
                 <FIcon size={12} style={{ color: service.color }} />
-                <span className="text-xs text-gray-400 font-medium">{f.label}</span>
+                <span className="text-sm text-gray-400 font-medium">{f.label}</span>
               </div>
             );
           })}
@@ -119,7 +119,7 @@ function ServiceCard({ service, isActive, onActivate, index }: {
                 </div>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {service.tech.map((t) => (
-                    <span key={t} className="px-3 py-1 rounded-full text-xs font-medium font-mono"
+                    <span key={t} className="px-3 py-1 rounded-full text-sm font-medium font-mono"
                       style={{ background: `${service.color}08`, color: `${service.color}bb`, border: `1px solid ${service.color}18` }}>
                       {t}
                     </span>
@@ -159,7 +159,7 @@ export default function ServicesSection() {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-16">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-[10px] uppercase tracking-[0.3em] font-mono mb-4"
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-sm uppercase tracking-[0.3em] font-mono mb-4"
             style={{ background: "rgba(124,58,237,0.06)", border: "1px solid rgba(124,58,237,0.12)" }}>
             <span className="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse" />
             Our Services
@@ -192,7 +192,7 @@ export default function ServicesSection() {
             <div key={s.label} className="rounded-xl px-5 py-4 text-center relative overflow-hidden"
               style={{ background: "rgba(5,5,7,0.7)", border: "1px solid rgba(124,58,237,0.06)" }}>
               <p className="text-2xl font-bold gradient-text font-mono">{s.value}</p>
-              <p className="text-[10px] text-gray-600 mt-1 uppercase tracking-wider font-mono">{s.label}</p>
+              <p className="text-sm text-gray-600 mt-1 uppercase tracking-wider font-mono">{s.label}</p>
             </div>
           ))}
         </motion.div>

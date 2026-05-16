@@ -81,7 +81,7 @@ export default function ContactSection() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="max-w-xl">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-[10px] uppercase tracking-[0.3em] font-mono mb-4"
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-sm uppercase tracking-[0.3em] font-mono mb-4"
               style={{ background: "rgba(124,58,237,0.06)", border: "1px solid rgba(124,58,237,0.12)" }}>
               <IXMark size={14} />
               SYS://CONTACT — OPEN
@@ -109,7 +109,7 @@ export default function ContactSection() {
                   <Icon size={14} className="text-purple-400 flex-shrink-0 relative z-10" />
                   <div className="flex flex-col relative z-10">
                     <span className="text-[8px] text-purple-700/50 font-mono tracking-widest">{info.code}</span>
-                    <span className="text-[10px] text-gray-500 uppercase tracking-wider leading-none">{info.label}</span>
+                    <span className="text-sm text-gray-500 uppercase tracking-wider leading-none">{info.label}</span>
                     {"isEmail" in info && info.isEmail ? (
                       <button onClick={() => window.location.href = `mailto:${emailUser}@${emailDomain}`} className="text-sm text-gray-200 font-medium hover:text-purple-300 transition-colors font-mono text-left">{emailUser}@{emailDomain}</button>
                     ) : info.href ? (
@@ -147,11 +147,11 @@ export default function ContactSection() {
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-full bg-gradient-to-br from-purple-600 to-purple-900 border border-purple-500/30 flex items-center justify-center">
-                    <span className="text-white text-xs font-black font-mono">PI</span>
+                    <span className="text-white text-sm font-black font-mono">PI</span>
                   </div>
                   <div>
                     <p className="text-white text-sm font-semibold">Prem IzaX</p>
-                    <p className="text-gray-500 text-xs font-mono">Founder</p>
+                    <p className="text-gray-500 text-sm font-mono">Founder</p>
                   </div>
                 </div>
               </div>
@@ -165,7 +165,7 @@ export default function ContactSection() {
               }} />
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-5">
-                  <p className="text-[10px] text-purple-400 uppercase tracking-[0.3em] font-semibold font-mono">Process Pipeline</p>
+                  <p className="text-sm text-purple-400 uppercase tracking-[0.3em] font-semibold font-mono">Process Pipeline</p>
                   <span className="text-[8px] font-mono text-purple-700/40 tracking-widest">PROC://004</span>
                 </div>
                 <div className="space-y-4 relative">
@@ -180,7 +180,7 @@ export default function ContactSection() {
                     <div key={s.step} className="flex items-center gap-3 relative">
                       <div className="w-[30px] h-[30px] rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center flex-shrink-0 relative z-10"
                         style={{ boxShadow: "0 0 8px rgba(124,58,237,0.1)" }}>
-                        <span className="text-[10px] font-bold text-purple-400 font-mono">{s.step}</span>
+                        <span className="text-sm font-bold text-purple-400 font-mono">{s.step}</span>
                       </div>
                       <div className="flex-1">
                         <span className="text-sm text-gray-300">{s.label}</span>
@@ -235,31 +235,31 @@ export default function ContactSection() {
                     className="relative z-10 space-y-5 pt-6">
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="name" className="block text-xs text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Name</label>
+                        <label htmlFor="name" className="block text-sm text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Name</label>
                         <input id="name" {...register("name")} placeholder="Your name"
                           className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 min-h-[48px] text-white text-base font-mono placeholder-gray-600 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all" />
-                        {errors.name && <p className="mt-1 text-xs text-red-400 font-mono">{errors.name.message}</p>}
+                        {errors.name && <p className="mt-1 text-sm text-red-400 font-mono">{errors.name.message}</p>}
                       </div>
                       <div>
-                        <label htmlFor="email" className="block text-xs text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Email</label>
+                        <label htmlFor="email" className="block text-sm text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Email</label>
                         <input id="email" {...register("email")} type="email" placeholder="you@company.com"
                           className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 min-h-[48px] text-white text-base font-mono placeholder-gray-600 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all" />
-                        {errors.email && <p className="mt-1 text-xs text-red-400 font-mono">{errors.email.message}</p>}
+                        {errors.email && <p className="mt-1 text-sm text-red-400 font-mono">{errors.email.message}</p>}
                       </div>
                     </div>
 
                     <div>
-                      <label htmlFor="subject" className="block text-xs text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Subject</label>
+                      <label htmlFor="subject" className="block text-sm text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Subject</label>
                       <input id="subject" {...register("subject")} placeholder="Web Application Development"
                         className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 min-h-[48px] text-white text-base font-mono placeholder-gray-700 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all" />
-                      {errors.subject && <p className="mt-1 text-xs text-red-400 font-mono">{errors.subject.message}</p>}
+                      {errors.subject && <p className="mt-1 text-sm text-red-400 font-mono">{errors.subject.message}</p>}
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-xs text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Message</label>
+                      <label htmlFor="message" className="block text-sm text-gray-500 uppercase tracking-[0.2em] mb-2 font-mono">↳ Message</label>
                       <textarea id="message" {...register("message")} rows={5} placeholder="Tell us about your project, timeline, and goals..."
                         className="w-full bg-white/[0.02] border border-purple-800/20 rounded-xl px-4 py-3 min-h-[48px] text-white text-base font-mono placeholder-gray-700 focus:outline-none focus:border-purple-500/50 focus:ring-1 focus:ring-purple-500/15 transition-all resize-none" />
-                      {errors.message && <p className="mt-1 text-xs text-red-400 font-mono">{errors.message.message}</p>}
+                      {errors.message && <p className="mt-1 text-sm text-red-400 font-mono">{errors.message.message}</p>}
                     </div>
 
                     <motion.button type="submit" disabled={isSubmitting}

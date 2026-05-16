@@ -68,28 +68,47 @@ function FloatingSphere({ position, scale, speed }: { position: [number, number,
 
 function CentralOrb() {
   const ref = useRef<THREE.Mesh>(null!);
+  const groupRef = useRef<THREE.Group>(null!);
 
   useFrame((state) => {
-    if (ref.current) {
+    if (ref.current && groupRef.current) {
       ref.current.rotation.y = state.clock.elapsedTime * 0.2;
       ref.current.rotation.x = state.clock.elapsedTime * 0.1;
       const scale = 1 + Math.sin(state.clock.elapsedTime * 0.5) * 0.05;
       ref.current.scale.setScalar(scale);
+      groupRef.current.rotation.z = state.clock.elapsedTime * 0.05;
     }
   });
 
   return (
-    <mesh ref={ref} position={[0, 0, 0]}>
-      <icosahedronGeometry args={[1.5, 5]} />
-      <meshPhongMaterial
-        color="#7C3AED"
-        emissive="#4C1D95"
-        emissiveIntensity={0.6}
-        shininess={120}
-        wireframe={false}
-        side={THREE.DoubleSide}
-      />
-    </mesh>
+    <group ref={groupRef}>
+      {/* Main icosahedron with reflective material */}
+      <mesh ref={ref} position={[0, 0, 0]}>
+        <icosahedronGeometry args={[1.5, 6]} />
+        <meshPhongMaterial
+          color="#7C3AED"
+          emissive="#a855f7"
+          emissiveIntensity={0.7}
+          shininess={150}
+          wireframe={false}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
+      {/* Outer glow sphere for depth */}
+      <mesh position={[0, 0, 0]} scale={1.15}>
+        <icosahedronGeometry args={[1.5, 4]} />
+        <meshStandardMaterial
+          color="#d946ef"
+          emissive="#7C3AED"
+          emissiveIntensity={0.3}
+          metalness={0.6}
+          roughness={0.4}
+          transparent
+          opacity={0.2}
+          wireframe={false}
+        />
+      </mesh>
+    </group>
   );
 }
 

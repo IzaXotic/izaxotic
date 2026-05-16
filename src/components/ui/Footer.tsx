@@ -83,7 +83,7 @@ export default function Footer() {
                 Iza<span className="gradient-text">Xotic</span>
               </span>
             </div>
-            <p className="text-gray-500 text-xs leading-relaxed max-w-[200px]">
+            <p className="text-gray-500 text-sm leading-relaxed max-w-[200px]">
               Custom development studio. Bold visions, built&nbsp;right.
             </p>
             <span className="block text-[8px] font-mono text-purple-800/40 tracking-widest mt-3">SYS://IZAXOTIC v2.0</span>
@@ -93,7 +93,7 @@ export default function Footer() {
           {navCols.map((col) => (
             <div key={col.heading}>
               <div className="flex items-center justify-between mb-4">
-                <p className="text-[10px] text-purple-400/70 uppercase tracking-[0.3em] font-semibold font-mono">{col.heading}</p>
+                <p className="text-sm text-purple-400/70 uppercase tracking-[0.3em] font-semibold font-mono">{col.heading}</p>
                 <span className="text-[7px] font-mono text-purple-800/30 tracking-widest">{col.code}</span>
               </div>
               <ul className="space-y-2.5">
@@ -119,7 +119,7 @@ export default function Footer() {
           {/* Connect — social icons */}
           <div>
             <div className="flex items-center justify-between mb-4">
-              <p className="text-[10px] text-purple-400/70 uppercase tracking-[0.3em] font-semibold font-mono">Connect</p>
+              <p className="text-sm text-purple-400/70 uppercase tracking-[0.3em] font-semibold font-mono">Connect</p>
               <span className="text-[7px] font-mono text-purple-800/30 tracking-widest">NAV://EXT</span>
             </div>
             <div className="flex items-center gap-3">
@@ -136,10 +136,10 @@ export default function Footer() {
           {/* CTA block */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center justify-between mb-4">
-              <p className="text-[10px] text-purple-400/70 uppercase tracking-[0.3em] font-semibold font-mono">Start a project</p>
+              <p className="text-sm text-purple-400/70 uppercase tracking-[0.3em] font-semibold font-mono">Start a project</p>
               <span className="text-[7px] font-mono text-purple-800/30 tracking-widest">CMD://NEW</span>
             </div>
-            <p className="text-gray-500 text-xs leading-relaxed mb-5">Have an idea? Let&apos;s build something that lasts.</p>
+            <p className="text-gray-500 text-sm leading-relaxed mb-5">Have an idea? Let&apos;s build something that lasts.</p>
             <button onClick={() => scrollTo("#contact")}
               className="group inline-flex items-center gap-2 text-sm font-semibold text-white px-5 py-2.5 rounded-xl font-mono transition-all duration-200 hover:shadow-[0_0_30px_rgba(124,58,237,0.4)]"
               style={{ background: "linear-gradient(135deg, #7C3AED, #4C1D95)", boxShadow: "0 0 20px rgba(124,58,237,0.25)" }}>
@@ -153,12 +153,12 @@ export default function Footer() {
         <div className="relative z-10">
           <div className="h-px w-full bg-gradient-to-r from-transparent via-purple-900/20 to-transparent mb-6" />
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div className="flex items-center gap-3 text-[11px] text-gray-600 font-mono">
+            <div className="flex items-center gap-3 text-sm text-gray-600 font-mono">
               <span>© {year} IzaXotic</span>
               <span className="hidden sm:inline text-purple-900/30">|</span>
               <button onClick={() => window.location.href = `mailto:${emailUser}@${emailDomain}`} className="hover:text-purple-400 transition-colors">{emailUser}@{emailDomain}</button>
             </div>
-            <span className="text-[11px] text-gray-700 font-mono">
+            <span className="text-sm text-gray-700 font-mono">
               Made with ♥ by IzaXotic <span className="hud-blink" />
             </span>
           </div>

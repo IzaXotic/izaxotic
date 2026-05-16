@@ -173,7 +173,7 @@ export default function CareersClient() {
 
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-16">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-[10px] uppercase tracking-[0.3em] font-mono mb-4"
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-sm uppercase tracking-[0.3em] font-mono mb-4"
             style={{ background: "rgba(124,58,237,0.06)", border: "1px solid rgba(124,58,237,0.12)" }}>
             <IXMark size={12} />
             SYS://CAREERS — OPEN
@@ -194,7 +194,7 @@ export default function CareersClient() {
               { icon: Clock, label: "Flexible Hours" },
               { icon: MapPin, label: "India-based Studio" },
             ].map((p) => (
-              <span key={p.label} className="inline-flex items-center gap-1.5 text-xs font-mono text-gray-500 px-3 py-1.5 rounded-lg"
+              <span key={p.label} className="inline-flex items-center gap-1.5 text-sm font-mono text-gray-500 px-3 py-1.5 rounded-lg"
                 style={{ background: "rgba(124,58,237,0.05)", border: "1px solid rgba(124,58,237,0.08)" }}>
                 <p.icon size={11} className="text-purple-500/60" />
                 {p.label}
@@ -230,7 +230,7 @@ export default function CareersClient() {
                         <h3 className="text-white font-semibold">{role.title}</h3>
                         <span className="text-[9px] font-mono text-purple-700/50">{role.code}</span>
                       </div>
-                      <p className="text-gray-600 text-xs font-mono mt-0.5">{role.type}</p>
+                      <p className="text-gray-600 text-sm font-mono mt-0.5">{role.type}</p>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="hidden sm:flex flex-wrap gap-1.5">
@@ -253,10 +253,10 @@ export default function CareersClient() {
 
                           <div className="grid sm:grid-cols-2 gap-5 mb-5">
                             <div>
-                              <p className="text-[10px] font-mono text-purple-400/60 uppercase tracking-widest mb-2">Responsibilities</p>
+                              <p className="text-sm font-mono text-purple-400/60 uppercase tracking-widest mb-2">Responsibilities</p>
                               <ul className="space-y-1.5">
                                 {role.responsibilities.map((r) => (
-                                  <li key={r} className="flex items-start gap-2 text-xs text-gray-500">
+                                  <li key={r} className="flex items-start gap-2 text-sm text-gray-500">
                                     <span className="w-1 h-1 rounded-full bg-purple-500/50 mt-1.5 flex-shrink-0" />
                                     {r}
                                   </li>
@@ -264,10 +264,10 @@ export default function CareersClient() {
                               </ul>
                             </div>
                             <div>
-                              <p className="text-[10px] font-mono text-purple-400/60 uppercase tracking-widest mb-2">Requirements</p>
+                              <p className="text-sm font-mono text-purple-400/60 uppercase tracking-widest mb-2">Requirements</p>
                               <ul className="space-y-1.5">
                                 {role.requirements.map((r) => (
-                                  <li key={r} className="flex items-start gap-2 text-xs text-gray-500">
+                                  <li key={r} className="flex items-start gap-2 text-sm text-gray-500">
                                     <span className="w-1 h-1 rounded-full bg-purple-500/50 mt-1.5 flex-shrink-0" />
                                     {r}
                                   </li>
@@ -305,7 +305,7 @@ export default function CareersClient() {
             <div>
               <h2 className="text-2xl font-bold text-white">Apply Now</h2>
               {applyingFor && (
-                <p className="text-purple-400/70 text-xs font-mono mt-0.5">
+                <p className="text-purple-400/70 text-sm font-mono mt-0.5">
                   Applying for: <span className="text-purple-300">{applyingFor}</span>
                 </p>
               )}
@@ -322,7 +322,7 @@ export default function CareersClient() {
                 <p className="text-gray-500 text-sm max-w-xs mx-auto mb-6">
                   Your mail client should have opened. We&apos;ll review your application and get back to you within 48 hours.
                 </p>
-                <button onClick={() => setSubmitted(false)} className="text-xs font-mono text-purple-400 hover:text-purple-300 transition-colors">
+                <button onClick={() => setSubmitted(false)} className="text-sm font-mono text-purple-400 hover:text-purple-300 transition-colors">
                   Submit another application
                 </button>
               </motion.div>
@@ -332,26 +332,26 @@ export default function CareersClient() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   {/* Name */}
                   <div>
-                    <label className="block text-[10px] font-mono text-purple-400/60 uppercase tracking-widest mb-1.5">Full Name *</label>
+                    <label className="block text-sm font-mono text-purple-400/60 uppercase tracking-widest mb-1.5">Full Name *</label>
                     <input {...register("name")} placeholder="Your name"
                       className="w-full bg-transparent text-white text-sm rounded-xl px-4 py-3 outline-none transition-all placeholder:text-gray-700 font-mono focus:border-purple-500/40"
                       style={{ border: "1px solid rgba(124,58,237,0.12)", background: "rgba(124,58,237,0.03)" }} />
-                    {errors.name && <p className="text-red-400/80 text-[10px] font-mono mt-1">{errors.name.message}</p>}
+                    {errors.name && <p className="text-red-400/80 text-sm font-mono mt-1">{errors.name.message}</p>}
                   </div>
 
                   {/* Email */}
                   <div>
-                    <label className="block text-[10px] font-mono text-purple-400/60 uppercase tracking-widest mb-1.5">Email *</label>
+                    <label className="block text-sm font-mono text-purple-400/60 uppercase tracking-widest mb-1.5">Email *</label>
                     <input {...register("email")} type="email" placeholder="you@email.com"
                       className="w-full bg-transparent text-white text-sm rounded-xl px-4 py-3 outline-none transition-all placeholder:text-gray-700 font-mono focus:border-purple-500/40"
                       style={{ border: "1px solid rgba(124,58,237,0.12)", background: "rgba(124,58,237,0.03)" }} />
-                    {errors.email && <p className="text-red-400/80 text-[10px] font-mono mt-1">{errors.email.message}</p>}
+                    {errors.email && <p className="text-red-400/80 text-sm font-mono mt-1">{errors.email.message}</p>}
                   </div>
                 </div>
 
                 {/* Role */}
                 <div>
-                  <label className="block text-[10px] font-mono text-purple-400/60 uppercase tracking-widest mb-1.5">Role Applying For *</label>
+                  <label className="block text-sm font-mono text-purple-400/60 uppercase tracking-widest mb-1.5">Role Applying For *</label>
                   <select {...register("role")}
                     onChange={(e) => {
                       setValue("role", e.target.value, { shouldValidate: true });
@@ -365,31 +365,31 @@ export default function CareersClient() {
                     {openRoles.map((r) => <option key={r.id} value={r.title}>{r.title}</option>)}
                     <option value="Other / General Enquiry">Other / General Enquiry</option>
                   </select>
-                  {errors.role && <p className="text-red-400/80 text-[10px] font-mono mt-1">{errors.role.message}</p>}
+                  {errors.role && <p className="text-red-400/80 text-sm font-mono mt-1">{errors.role.message}</p>}
                 </div>
 
                 {/* Subject (auto-filled, editable) */}
                 <div>
-                  <label className="block text-[10px] font-mono text-purple-400/60 uppercase tracking-widest mb-1.5">Subject *</label>
+                  <label className="block text-sm font-mono text-purple-400/60 uppercase tracking-widest mb-1.5">Subject *</label>
                   <input {...register("subject")} placeholder="Application for Frontend Developer — IzaXotic"
                     className="w-full bg-transparent text-white text-sm rounded-xl px-4 py-3 outline-none transition-all placeholder:text-gray-700 font-mono focus:border-purple-500/40"
                     style={{ border: "1px solid rgba(124,58,237,0.12)", background: "rgba(124,58,237,0.03)" }} />
-                  {errors.subject && <p className="text-red-400/80 text-[10px] font-mono mt-1">{errors.subject.message}</p>}
+                  {errors.subject && <p className="text-red-400/80 text-sm font-mono mt-1">{errors.subject.message}</p>}
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label className="block text-[10px] font-mono text-purple-400/60 uppercase tracking-widest mb-1.5">About You *</label>
+                  <label className="block text-sm font-mono text-purple-400/60 uppercase tracking-widest mb-1.5">About You *</label>
                   <textarea {...register("message")} rows={4}
                     placeholder="Tell us about yourself, your experience, and why you want to work with IzaXotic…"
                     className="w-full bg-transparent text-white text-sm rounded-xl px-4 py-3 outline-none transition-all resize-none placeholder:text-gray-700 font-mono focus:border-purple-500/40"
                     style={{ border: "1px solid rgba(124,58,237,0.12)", background: "rgba(124,58,237,0.03)" }} />
-                  {errors.message && <p className="text-red-400/80 text-[10px] font-mono mt-1">{errors.message.message}</p>}
+                  {errors.message && <p className="text-red-400/80 text-sm font-mono mt-1">{errors.message.message}</p>}
                 </div>
 
                 {/* Resume upload */}
                 <div>
-                  <label className="block text-[10px] font-mono text-purple-400/60 uppercase tracking-widest mb-1.5">Resume / CV * <span className="text-gray-700 normal-case">(PDF or Word, max 5MB)</span></label>
+                  <label className="block text-sm font-mono text-purple-400/60 uppercase tracking-widest mb-1.5">Resume / CV * <span className="text-gray-700 normal-case">(PDF or Word, max 5MB)</span></label>
                   <label className="flex items-center gap-3 cursor-pointer rounded-xl px-4 py-3 transition-all hover:border-purple-500/30 group"
                     style={{ border: "1px dashed rgba(124,58,237,0.2)", background: "rgba(124,58,237,0.02)" }}>
                     <Upload size={16} className="text-purple-500/50 group-hover:text-purple-400 transition-colors flex-shrink-0" />
@@ -404,7 +404,7 @@ export default function CareersClient() {
                     )}
                     <input type="file" accept=".pdf,.doc,.docx" className="hidden" onChange={handleFileChange} />
                   </label>
-                  {errors.resume && <p className="text-red-400/80 text-[10px] font-mono mt-1">{errors.resume.message as string}</p>}
+                  {errors.resume && <p className="text-red-400/80 text-sm font-mono mt-1">{errors.resume.message as string}</p>}
                 </div>
 
                 {/* Submit */}
@@ -418,7 +418,7 @@ export default function CareersClient() {
                   )}
                 </button>
 
-                <p className="text-[10px] text-gray-700 font-mono text-center">
+                <p className="text-sm text-gray-700 font-mono text-center">
                   Your application will open in your mail client. Attach your resume before sending.
                 </p>
               </motion.form>

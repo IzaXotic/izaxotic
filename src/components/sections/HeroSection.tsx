@@ -185,7 +185,7 @@ export default function HeroSection() {
             ].map((feature) => (
               <span
                 key={feature.label}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-purple-300/80 border border-purple-800/30"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-purple-300/80 border border-purple-800/30"
                 style={{ background: "rgba(124,58,237,0.06)" }}
               >
                 <feature.icon size={13} className="text-purple-400" />
@@ -222,7 +222,7 @@ export default function HeroSection() {
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-purple-400/60 hover:text-purple-300 transition-colors"
       >
-        <span className="text-[10px] tracking-[0.25em] uppercase font-medium">
+        <span className="text-sm tracking-[0.25em] uppercase font-medium">
           Explore
         </span>
         <ChevronDown size={18} />

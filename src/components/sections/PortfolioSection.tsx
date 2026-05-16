@@ -102,7 +102,7 @@ function ProjectCard({ project, onSelect, size = "default" }: {
       <div className={`${isHero ? "p-7" : "p-5"}`}>
         <div className="flex flex-wrap gap-1.5 mb-3">
           {project.tags.map((tag) => (
-            <span key={tag} className="px-2.5 py-0.5 rounded-full text-[10px] font-medium font-mono"
+            <span key={tag} className="px-2.5 py-0.5 rounded-full text-sm font-medium font-mono"
               style={{ background: `${project.color}08`, color: `${project.color}99`, border: `1px solid ${project.color}12` }}>
               {tag}
             </span>
@@ -149,7 +149,7 @@ export default function PortfolioSection() {
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-[10px] uppercase tracking-[0.3em] font-mono mb-4"
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-sm uppercase tracking-[0.3em] font-mono mb-4"
               style={{ background: "rgba(124,58,237,0.06)", border: "1px solid rgba(124,58,237,0.12)" }}>
               <span className="w-1 h-1 rounded-full bg-purple-500" />
               SYS://PORTFOLIO — LOADED
@@ -167,7 +167,7 @@ export default function PortfolioSection() {
             {filters.map((f) => (
               <motion.button key={f.key} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveFilter(f.key)}
-                className={`px-4 py-2 rounded-full text-[10px] font-mono uppercase tracking-[0.2em] transition-all duration-200 ${
+                className={`px-4 py-2 rounded-full text-sm font-mono uppercase tracking-[0.2em] transition-all duration-200 ${
                   activeFilter === f.key ? "text-white" : "text-gray-600 hover:text-white"
                 }`}
                 style={activeFilter === f.key ? {
@@ -223,7 +223,7 @@ export default function PortfolioSection() {
                 <div className="p-7">
                   <div className="flex flex-wrap gap-1.5 mb-3">
                     {selectedProject.tags.map((tag) => (
-                      <span key={tag} className="px-2.5 py-0.5 rounded-full text-xs font-mono"
+                      <span key={tag} className="px-2.5 py-0.5 rounded-full text-sm font-mono"
                         style={{ background: `${selectedProject.color}08`, color: `${selectedProject.color}bb`, border: `1px solid ${selectedProject.color}12` }}>
                         {tag}
                       </span>

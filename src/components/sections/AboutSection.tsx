@@ -51,7 +51,7 @@ export default function AboutSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="mb-14">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-[10px] uppercase tracking-[0.3em] font-mono mb-3"
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-purple-300/80 text-sm uppercase tracking-[0.3em] font-mono mb-3"
             style={{ background: "rgba(124,58,237,0.06)", border: "1px solid rgba(124,58,237,0.12)" }}>
             <IXMark size={12} />
             SYS://ABOUT — DECODED
@@ -115,7 +115,7 @@ export default function AboutSection() {
                 <span className="text-[9px] font-mono text-purple-600/50 tracking-widest">SYS://HIRING</span>
               </div>
 
-              <p className="text-gray-500 text-xs mb-5 relative z-10 leading-relaxed">
+              <p className="text-gray-500 text-sm mb-5 relative z-10 leading-relaxed">
                 We&apos;re always looking for talented people to build with. Remote-first, outcome-driven.
               </p>
 
@@ -130,7 +130,7 @@ export default function AboutSection() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-white text-sm font-medium">{r.title}</p>
-                      <p className="text-gray-600 text-[10px] font-mono">{r.type}</p>
+                      <p className="text-gray-600 text-sm font-mono">{r.type}</p>
                       <div className="flex flex-wrap gap-1 mt-1">
                         {r.skills.map((s) => (
                           <span key={s} className="text-[9px] font-mono text-purple-400/60 px-1.5 py-0.5 rounded"
@@ -143,7 +143,7 @@ export default function AboutSection() {
                 ))}
               </div>
 
-              <p className="text-[10px] font-mono text-purple-700/40 mt-5 relative z-10">
+              <p className="text-sm font-mono text-purple-700/40 mt-5 relative z-10">
                 Apply via <span className="text-purple-500/60">hello@izaxotic.com</span>
               </p>
             </motion.div>
