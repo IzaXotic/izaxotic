@@ -80,15 +80,14 @@ function CentralOrb() {
 
   return (
     <mesh ref={ref} position={[0, 0, 0]}>
-      <torusKnotGeometry args={[1.2, 0.35, 200, 20]} />
-      <meshStandardMaterial
+      <icosahedronGeometry args={[1.5, 5]} />
+      <meshPhongMaterial
         color="#7C3AED"
         emissive="#4C1D95"
-        emissiveIntensity={0.8}
-        metalness={0.8}
-        roughness={0.1}
-        transparent
-        opacity={0.9}
+        emissiveIntensity={0.6}
+        shininess={120}
+        wireframe={false}
+        side={THREE.DoubleSide}
       />
     </mesh>
   );

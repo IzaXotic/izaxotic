@@ -14,16 +14,10 @@ Founded in 2022 by Prem IzaX, IzaXotic specialises in premium web development an
 - **UI/UX Design**: Complete design systems crafted in Figma, translated into production-ready code. Research-driven, accessible, and visually stunning.
 - **3D & Interactive Experiences**: Immersive Three.js scenes, advanced animations with GSAP and Framer Motion, and micro-interactions that delight users.
 
-## Pricing
-
-- **Essential** — Starting at ₹15,000 (~$180 USD). Custom-coded website with up to 5 pages, responsive design, contact form, and SEO setup. Delivery: 1-2 weeks.
-- **Professional** — Starting at ₹45,000 (~$540 USD). Full-scale web application with up to 12 pages, advanced animations, CMS, and 3D elements. Delivery: 3-5 weeks.
-- **Enterprise** — Starting at ₹1,00,000 (~$1,200 USD). Enterprise-grade digital products with unlimited pages, full backend integration, and dedicated project management. Delivery: 6-10 weeks.
-
 ## Contact
 
 - Email: hello@izaxotic.com
-- Website: https://izaxotic-prototype.netlify.app
+- Website: https://izaxotic.com
 - Response Time: Within 24 hours
 
 ## Technology Stack

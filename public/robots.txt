@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://izaxotic-prototype.netlify.app/sitemap.xml
+Sitemap: https://izaxotic.com/sitemap.xml
