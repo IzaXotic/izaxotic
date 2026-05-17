@@ -22,7 +22,7 @@ const navCols: NavCol[] = [
     links: [
       { label: "Services", href: "#services" },
       { label: "Work", href: "#portfolio" },
-      { label: "Pricing", href: "#pricing" },
+      // { label: "Pricing", href: "#pricing" },
       { label: "About", href: "#about" },
       { label: "Careers", href: "/careers" },
       { label: "Contact", href: "#contact" },
