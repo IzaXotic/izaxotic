@@ -13,7 +13,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = "https://izaxotic-prototype.netlify.app";
+const siteUrl = "https://izaxotic.com";
 
 export const metadata: Metadata = {
   title: "IzaXotic — Custom Web Development & UI/UX Studio",
