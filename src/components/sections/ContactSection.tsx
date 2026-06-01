@@ -8,10 +8,30 @@ import { Send, CheckCircle, MapPin, Mail, Clock } from "lucide-react";
 import IXMark from "@/components/ui/IXMark";
 
 const schema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email"),
-  subject: z.string().min(3, "Subject must be at least 3 characters"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  name: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .max(100, "Name must be less than 100 characters")
+    .regex(/^[a-zA-Z\s'-]+$/, "Name can only contain letters, spaces, hyphens, and apostrophes")
+    .refine((val) => !/^[^a-zA-Z]/.test(val), "Name must start with a letter"),
+  email: z
+    .string()
+    .email("Please enter a valid email")
+    .max(254, "Email must be less than 254 characters")
+    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email format"),
+  subject: z
+    .string()
+    .min(3, "Subject must be at least 3 characters")
+    .max(200, "Subject must be less than 200 characters")
+    .regex(/^[a-zA-Z0-9\s&.,'-]+$/, "Subject contains invalid characters")
+    .refine((val) => !/^[\s]+$/.test(val), "Subject cannot be empty or only spaces"),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(5000, "Message must be less than 5000 characters")
+    .regex(/^[a-zA-Z0-9\s.,!?@()\-:;'"&\n\r]+$/, "Message contains invalid characters")
+    .refine((val) => !/^[\s]+$/.test(val), "Message cannot be empty or only spaces")
+    .refine((val) => (val.match(/[a-zA-Z]/g) || []).length >= 5, "Message must contain at least 5 letters"),
 });
 
 type FormData = z.infer<typeof schema>;

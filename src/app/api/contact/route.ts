@@ -1,5 +1,35 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { z } from "zod";
+import { validateContactSubmission } from "@/lib/validation";
+
+// Server-side validation schema (mirrors frontend + additional security checks)
+const contactSchema = z.object({
+  name: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .max(100, "Name must be less than 100 characters")
+    .regex(/^[a-zA-Z\s'-]+$/, "Name can only contain letters, spaces, hyphens, and apostrophes")
+    .refine((val) => !/^[^a-zA-Z]/.test(val), "Name must start with a letter"),
+  email: z
+    .string()
+    .email("Please enter a valid email")
+    .max(254, "Email must be less than 254 characters")
+    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email format"),
+  subject: z
+    .string()
+    .min(3, "Subject must be at least 3 characters")
+    .max(200, "Subject must be less than 200 characters")
+    .regex(/^[a-zA-Z0-9\s&.,'-]+$/, "Subject contains invalid characters")
+    .refine((val) => !/^[\s]+$/.test(val), "Subject cannot be empty or only spaces"),
+  message: z
+    .string()
+    .min(10, "Message must be at least 10 characters")
+    .max(5000, "Message must be less than 5000 characters")
+    .regex(/^[a-zA-Z0-9\s.,!?@()\-:;'"&\n\r]+$/, "Message contains invalid characters")
+    .refine((val) => !/^[\s]+$/.test(val), "Message cannot be empty or only spaces")
+    .refine((val) => (val.match(/[a-zA-Z]/g) || []).length >= 5, "Message must contain at least 5 letters"),
+});
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,6 +41,25 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         { error: "All fields are required" },
         { status: 400 }
+      );
+    }
+
+    // Schema validation (will throw if invalid)
+    const validation = contactSchema.safeParse({ name, email, subject, message });
+    if (!validation.success) {
+      const firstError = validation.error.issues[0]?.message || "Validation failed";
+      return NextResponse.json(
+        { error: firstError },
+        { status: 400 }
+      );
+    }
+
+    // Anti-spam detection
+    const spamDetection = validateContactSubmission(name, email, subject, message);
+    if (spamDetection) {
+      return NextResponse.json(
+        { error: spamDetection },
+        { status: 403 }
       );
     }
 
